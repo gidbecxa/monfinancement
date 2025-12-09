@@ -240,6 +240,43 @@ export interface Database {
         Args: Record<string, never>
         Returns: string
       }
+      register_user: {
+        Args: { p_phone_number: string }
+        Returns: {
+          user_id: string
+          pin: string
+          message: string
+        }
+      }
+      authenticate_user: {
+        Args: {
+          p_phone_number: string
+          p_pin: string
+          p_ip_address?: string
+          p_user_agent?: string
+        }
+        Returns: {
+          user_id: string
+          session_token: string
+          expires_at: string
+          pin_regenerated: boolean
+          new_pin: string | null
+          message: string
+        }
+      }
+      validate_session: {
+        Args: { p_session_token: string }
+        Returns: {
+          is_valid: boolean
+          user_id: string | null
+          role: string | null
+          message: string
+        }
+      }
+      logout_user: {
+        Args: { p_session_token: string }
+        Returns: void
+      }
     }
     Enums: {
       [_ in never]: never

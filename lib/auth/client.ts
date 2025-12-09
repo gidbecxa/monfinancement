@@ -1,7 +1,6 @@
 'use client'
 
-import { createBrowserClient as createClient } from '@supabase/ssr'
-import type { Database } from '@/types/database.types'
+import { createClient } from '@/lib/supabase/client'
 
 export interface RegisterResponse {
   user_id: string
@@ -30,30 +29,10 @@ export interface SessionValidation {
  * Returns user_id and 6-digit PIN that must be saved by user
  */
 export async function registerUser(phoneNumber: string): Promise<RegisterResponse> {
-  const supabase = createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return document.cookie
-            .split('; ')
-            .find((row) => row.startsWith(`${name}=`))
-            ?.split('=')[1]
-        },
-        set(name: string, value: string) {
-          document.cookie = `${name}=${value}; path=/`
-        },
-        remove(name: string) {
-          document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT`
-        },
-      },
-    }
-  )
+  const supabase = createClient()
   
-  const { data, error } = await supabase
-    .rpc('register_user', { p_phone_number: phoneNumber })
-    .single()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (supabase.rpc as any)('register_user', { p_phone_number: phoneNumber })
 
   if (error) {
     throw new Error(error.message || 'Registration failed')
@@ -72,42 +51,22 @@ export async function loginUser(
   ipAddress?: string,
   userAgent?: string
 ): Promise<LoginResponse> {
-  const supabase = createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return document.cookie
-            .split('; ')
-            .find((row) => row.startsWith(`${name}=`))
-            ?.split('=')[1]
-        },
-        set(name: string, value: string) {
-          document.cookie = `${name}=${value}; path=/`
-        },
-        remove(name: string) {
-          document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT`
-        },
-      },
-    }
-  )
+  const supabase = createClient()
   
-  const { data, error } = await supabase
-    .rpc('authenticate_user', {
-      p_phone_number: phoneNumber,
-      p_pin: pin,
-      p_ip_address: ipAddress,
-      p_user_agent: userAgent,
-    })
-    .single()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (supabase.rpc as any)('authenticate_user', {
+    p_phone_number: phoneNumber,
+    p_pin: pin,
+    p_ip_address: ipAddress,
+    p_user_agent: userAgent,
+  })
 
   if (error) {
     throw new Error(error.message || 'Login failed')
   }
 
   // Store session token in localStorage
-  if (data.session_token) {
+  if (data && data.session_token) {
     localStorage.setItem('session_token', data.session_token)
     localStorage.setItem('session_expires_at', data.expires_at)
     localStorage.setItem('user_id', data.user_id)
@@ -120,28 +79,9 @@ export async function loginUser(
  * Validate current session token
  */
 export async function validateSession(sessionToken?: string): Promise<SessionValidation> {
-  const supabase = createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return document.cookie
-            .split('; ')
-            .find((row) => row.startsWith(`${name}=`))
-            ?.split('=')[1]
-        },
-        set(name: string, value: string) {
-          document.cookie = `${name}=${value}; path=/`
-        },
-        remove(name: string) {
-          document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT`
-        },
-      },
-    }
-  )
+  const supabase = createClient()
   
-  const token = sessionToken || localStorage.getItem('session_token')
+  const token = sessionToken || (typeof window !== 'undefined' ? localStorage.getItem('session_token') : null)
   
   if (!token) {
     return {
@@ -152,15 +92,16 @@ export async function validateSession(sessionToken?: string): Promise<SessionVal
     }
   }
 
-  const { data, error } = await supabase
-    .rpc('validate_session', { p_session_token: token })
-    .single()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data, error } = await (supabase.rpc as any)('validate_session', { p_session_token: token })
 
-  if (error || !data?.is_valid) {
+  if (error || !data || !data.is_valid) {
     // Clear invalid session
-    localStorage.removeItem('session_token')
-    localStorage.removeItem('session_expires_at')
-    localStorage.removeItem('user_id')
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('session_token')
+      localStorage.removeItem('session_expires_at')
+      localStorage.removeItem('user_id')
+    }
     
     return {
       is_valid: false,
@@ -177,36 +118,20 @@ export async function validateSession(sessionToken?: string): Promise<SessionVal
  * Logout user - invalidate session token
  */
 export async function logoutUser(): Promise<void> {
-  const supabase = createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) {
-          return document.cookie
-            .split('; ')
-            .find((row) => row.startsWith(`${name}=`))
-            ?.split('=')[1]
-        },
-        set(name: string, value: string) {
-          document.cookie = `${name}=${value}; path=/`
-        },
-        remove(name: string) {
-          document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT`
-        },
-      },
-    }
-  )
-  const token = localStorage.getItem('session_token')
+  const supabase = createClient()
+  const token = typeof window !== 'undefined' ? localStorage.getItem('session_token') : null
   
   if (token) {
-    await supabase.rpc('logout_user', { p_session_token: token })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await (supabase.rpc as any)('logout_user', { p_session_token: token })
   }
 
   // Clear local storage
-  localStorage.removeItem('session_token')
-  localStorage.removeItem('session_expires_at')
-  localStorage.removeItem('user_id')
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('session_token')
+    localStorage.removeItem('session_expires_at')
+    localStorage.removeItem('user_id')
+  }
 }
 
 /**
