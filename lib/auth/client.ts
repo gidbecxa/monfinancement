@@ -38,7 +38,10 @@ export async function registerUser(phoneNumber: string): Promise<RegisterRespons
     throw new Error(error.message || 'Registration failed')
   }
 
-  return data as RegisterResponse
+  // Supabase RPC returns table functions as an array, we need the first row
+  const result = Array.isArray(data) ? data[0] : data
+  
+  return result as RegisterResponse
 }
 
 /**
@@ -65,14 +68,17 @@ export async function loginUser(
     throw new Error(error.message || 'Login failed')
   }
 
+  // Supabase RPC returns table functions as an array, we need the first row
+  const result = Array.isArray(data) ? data[0] : data
+
   // Store session token in localStorage
-  if (data && data.session_token) {
-    localStorage.setItem('session_token', data.session_token)
-    localStorage.setItem('session_expires_at', data.expires_at)
-    localStorage.setItem('user_id', data.user_id)
+  if (result && result.session_token) {
+    localStorage.setItem('session_token', result.session_token)
+    localStorage.setItem('session_expires_at', result.expires_at)
+    localStorage.setItem('user_id', result.user_id)
   }
 
-  return data as LoginResponse
+  return result as LoginResponse
 }
 
 /**
@@ -95,7 +101,10 @@ export async function validateSession(sessionToken?: string): Promise<SessionVal
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, error } = await (supabase.rpc as any)('validate_session', { p_session_token: token })
 
-  if (error || !data || !data.is_valid) {
+  // Supabase RPC returns table functions as an array, we need the first row
+  const result = Array.isArray(data) ? data[0] : data
+
+  if (error || !result || !result.is_valid) {
     // Clear invalid session
     if (typeof window !== 'undefined') {
       localStorage.removeItem('session_token')
@@ -107,11 +116,11 @@ export async function validateSession(sessionToken?: string): Promise<SessionVal
       is_valid: false,
       user_id: null,
       role: null,
-      message: error?.message || data?.message || 'Session expired',
+      message: error?.message || result?.message || 'Session expired',
     }
   }
 
-  return data as SessionValidation
+  return result as SessionValidation
 }
 
 /**
