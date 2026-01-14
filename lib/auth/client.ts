@@ -56,12 +56,11 @@ export async function loginUser(
 ): Promise<LoginResponse> {
   const supabase = createClient()
   
+  // Note: ipAddress and userAgent are kept for future use but not currently used by the function
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, error } = await (supabase.rpc as any)('authenticate_user', {
     p_phone_number: phoneNumber,
     p_pin: pin,
-    p_ip_address: ipAddress,
-    p_user_agent: userAgent,
   })
 
   if (error) {
