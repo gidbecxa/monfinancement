@@ -75,7 +75,10 @@ export default function LoginPage() {
       toast.error(errorMessage || t('loginFailed'))
     } finally {
       setLoading(false)
-    }async () => {
+    }
+  }
+
+  const handleContinueToDashboard = async () => {
     const userId = localStorage.getItem('user_id')
     if (userId) {
       const redirect = await getPostLoginRedirect(userId)
@@ -83,9 +86,6 @@ export default function LoginPage() {
     } else {
       router.push('/dashboard')
     }
-
-  const handleContinueToDashboard = () => {
-    router.push('/dashboard')
   }
 
   if (showPinRegenerated) {
