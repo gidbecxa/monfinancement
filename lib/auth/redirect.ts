@@ -29,7 +29,7 @@ export async function getPostLoginRedirect(userId: string): Promise<RedirectInfo
       console.error('Error fetching applications:', error)
       // On error, default to starting a new application
       return {
-        path: '/application/step-0',
+        path: '/application/new',
         reason: 'new_user'
       }
     }
@@ -37,7 +37,7 @@ export async function getPostLoginRedirect(userId: string): Promise<RedirectInfo
     // No applications - redirect to start new application
     if (!applications || applications.length === 0) {
       return {
-        path: '/application/step-0',
+        path: '/application/new',
         reason: 'new_user'
       }
     }
@@ -63,8 +63,9 @@ export async function getPostLoginRedirect(userId: string): Promise<RedirectInfo
       }
     }
     
+    // Continue incomplete application - the /application/new page handles step navigation internally
     return {
-      path: `/application/step-${currentStep}`,
+      path: '/application/new',
       reason: 'incomplete_application'
     }
     
@@ -72,7 +73,7 @@ export async function getPostLoginRedirect(userId: string): Promise<RedirectInfo
     console.error('Unexpected error in getPostLoginRedirect:', error)
     // On unexpected error, default to new application
     return {
-      path: '/application/step-0',
+      path: '/application/new',
       reason: 'new_user'
     }
   }
