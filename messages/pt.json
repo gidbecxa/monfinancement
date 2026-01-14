@@ -59,7 +59,14 @@
     "alreadyHaveAccount": "Já tem uma conta?",
     "dontHaveAccount": "Não tem uma conta?",
     "pinRegeneratedTitle": "PIN regenerado",
-    "pinRegeneratedDesc": "Seu PIN foi regenerado automaticamente por motivos de segurança"
+    "pinRegeneratedDesc": "Seu PIN foi regenerado automaticamente por motivos de segurança",
+    "enterPhone": "Digite seu número de telefone",
+    "sendCode": "Enviar código",
+    "verificationCode": "Código de verificação",
+    "enterCode": "Digite o código enviado para seu telefone",
+    "verify": "Verificar",
+    "invalidCode": "Código de verificação inválido",
+    "loginError": "Falha no login"
   },
   "home": {
     "title": "Bem-vindo ao Monfinancement",
@@ -88,83 +95,208 @@
     "ctaSubtitle": "Junte-se a milhares de clientes satisfeitos que confiam em nós para suas necessidades de financiamento",
     "ctaButton": "Comece seu pedido"
   },
-  "auth": {
-    "phoneNumber": "Número de telefone",
-    "enterPhone": "Digite seu número de telefone",
-    "sendCode": "Enviar código",
-    "verificationCode": "Código de verificação",
-    "enterCode": "Digite o código enviado para seu telefone",
-    "verify": "Verificar",
-    "invalidPhone": "Número de telefone inválido",
-    "invalidCode": "Código de verificação inválido",
-    "loginSuccess": "Login bem-sucedido",
-    "loginError": "Falha no login"
-  },
   "application": {
-    "title": "Pedido de financiamento",
-    "step0": {
-      "title": "Valor do financiamento",
+    "loading": "Carregando...",
+    "savingDraft": "Salvando rascunho...",
+    "draftSaved": "Rascunho salvo com sucesso",
+    "applicationStarted": "Pedido criado com sucesso",
+    "applicationSubmitted": "Pedido enviado com sucesso!",
+    "errorCreatingApplication": "Erro ao criar pedido. Tente novamente.",
+    "errorSubmitting": "Erro ao enviar pedido. Tente novamente.",
+    "steps": {
       "amount": "Valor",
-      "currency": "Moeda",
-      "next": "Continuar"
+      "personal": "Info Pessoal",
+      "details": "Detalhes",
+      "complete": "Completo"
+    },
+    "common": {
+      "buttons": {
+        "continue": "Continuar",
+        "next": "Próximo",
+        "back": "Voltar",
+        "submit": "Enviar pedido"
+      }
+    },
+    "step0": {
+      "title": "Quanto financiamento você precisa?",
+      "description": "Digite o valor que deseja solicitar",
+      "fields": {
+        "amount": {
+          "label": "Valor do financiamento",
+          "placeholder": "Digite o valor",
+          "helper": "Digite um valor entre €1.000 e €10.000.000"
+        }
+      },
+      "minimum": "Mínimo",
+      "maximum": "Máximo",
+      "secureNote": "🔒 Suas informações estão seguras e criptografadas",
+      "errors": {
+        "invalidAmount": "O valor deve estar entre €{min} e €{max}"
+      }
     },
     "step1": {
-      "title": "Informações pessoais",
-      "firstName": "Nome",
-      "lastName": "Sobrenome",
-      "dateOfBirth": "Data de nascimento",
-      "gender": "Gênero",
-      "male": "Masculino",
-      "female": "Feminino",
-      "other": "Outro",
-      "preferNotToSay": "Prefiro não dizer"
+      "title": "Conte-nos sobre você",
+      "description": "Forneça suas informações pessoais",
+      "fields": {
+        "firstName": {
+          "label": "Nome",
+          "placeholder": "João"
+        },
+        "lastName": {
+          "label": "Sobrenome",
+          "placeholder": "Silva"
+        },
+        "dateOfBirth": {
+          "label": "Data de nascimento",
+          "helper": "Você deve ter pelo menos 18 anos"
+        },
+        "gender": {
+          "label": "Gênero (Opcional)",
+          "placeholder": "Selecione seu gênero",
+          "optional": "Este campo é opcional",
+          "options": {
+            "male": "Masculino",
+            "female": "Feminino",
+            "other": "Outro",
+            "preferNotToSay": "Prefiro não dizer"
+          }
+        }
+      }
     },
     "step2": {
-      "title": "Contato e detalhes do financiamento",
-      "email": "Endereço de e-mail",
-      "address": "Endereço residencial",
-      "country": "País de residência",
-      "fundingType": "Tipo de financiamento",
-      "fundingReason": "Razão do financiamento",
-      "profession": "Profissão",
-      "monthlyIncome": "Renda mensal"
+      "title": "Detalhes do financiamento",
+      "description": "Conte-nos sobre seu pedido de financiamento",
+      "sections": {
+        "contact": "Informações de contato",
+        "funding": "Informações sobre financiamento",
+        "financial": "Informações financeiras"
+      },
+      "fields": {
+        "email": {
+          "label": "Endereço de e-mail",
+          "placeholder": "joao.silva@exemplo.com"
+        },
+        "address": {
+          "label": "Endereço residencial",
+          "placeholder": "Rua, Cidade, CEP"
+        },
+        "country": {
+          "label": "País de residência",
+          "placeholder": "Digite seu país"
+        },
+        "fundingType": {
+          "label": "Tipo de financiamento"
+        },
+        "fundingReason": {
+          "label": "Razão do financiamento",
+          "placeholder": "Explique por que você precisa deste financiamento..."
+        },
+        "profession": {
+          "label": "Profissão",
+          "placeholder": "Sua profissão atual"
+        },
+        "monthlyIncome": {
+          "label": "Renda mensal",
+          "placeholder": "Digite o valor",
+          "helper": "Digite sua renda mensal média"
+        }
+      }
     },
     "step3": {
-      "title": "Carregar documentos",
-      "identityFront": "Carteira de identidade (Frente)",
-      "identityBack": "Carteira de identidade (Verso)",
-      "rib": "RIB (Dados bancários)",
-      "upload": "Carregar",
-      "uploading": "Carregando...",
-      "uploaded": "Carregado",
-      "maxSize": "Tamanho máximo do arquivo: 10MB"
-    },
-    "step4": {
-      "title": "Revisar e enviar",
-      "review": "Revise seu pedido",
-      "submit": "Enviar pedido",
-      "applicationNumber": "Número do pedido",
-      "success": "Pedido enviado com sucesso!"
+      "title": "Pedido enviado com sucesso!",
+      "description": "Obrigado por enviar seu pedido de financiamento",
+      "applicationNumberLabel": "Seu número de pedido",
+      "copyApplicationNumber": "Copiar para área de transferência",
+      "applicationNumberCopied": "Número do pedido copiado!",
+      "saveApplicationNumber": "Salve este número para seus registros",
+      "nextStepsTitle": "Próximos passos",
+      "nextStepsMessage": "Entre em contato com um consultor designado para o acompanhamento adequado do seu pedido.",
+      "contactAdvisor": "Entre em contato com seu consultor:",
+      "contactWhatsApp": "Chat no WhatsApp",
+      "contactEmail": "Enviar e-mail",
+      "importantNotice": "Aviso importante",
+      "notice1": "Guarde seu número de pedido com segurança",
+      "notice2": "Um consultor entrará em contato em até 48 horas",
+      "notice3": "Verifique seu e-mail para confirmação",
+      "returnToDashboard": "Voltar ao painel"
     }
   },
   "dashboard": {
     "title": "Meu painel",
+    "subtitle": "Rastreie e gerencie suas solicitações de financiamento",
     "applicationNumber": "Número do pedido",
     "status": "Status",
     "submittedDate": "Data de envio",
     "amount": "Valor",
     "noApplications": "Ainda não há pedidos",
+    "noApplicationsDesc": "Você ainda não criou nenhuma solicitação de financiamento",
     "createNew": "Criar novo pedido",
+    "profileSettings": "Configurações do perfil",
+    "newApplication": "Nova solicitação",
+    "myApplications": "Minhas solicitações",
+    "applicationsSubtitle": "Visualize e gerencie todas as suas solicitações de financiamento",
+    "loadingApplications": "Carregando solicitações...",
+    "loading": "Carregando...",
+    "createFirstApplication": "Criar sua primeira solicitação",
+    "created": "Criado",
+    "draftProgress": "Passo {step} de {total}",
+    "continueDraft": "Continuar",
+    "viewDetails": "Ver detalhes",
     "statuses": {
       "draft": "Rascunho",
       "submitted": "Enviado",
       "under_review": "Em análise",
       "approved": "Aprovado",
       "rejected": "Rejeitado"
+    },
+    "stats": {
+      "total": "Total",
+      "draft": "Rascunho",
+      "submitted": "Enviado",
+      "underReview": "Em análise",
+      "approved": "Aprovado",
+      "rejected": "Rejeitado"
+    },
+    "detail": {
+      "title": "Detalhes da solicitação",
+      "status": "Status",
+      "created": "Criado",
+      "submitted": "Enviado",
+      "fundingInfo": "Informações de financiamento",
+      "amount": "Valor solicitado",
+      "fundingType": "Tipo de financiamento",
+      "fundingReason": "Razão do financiamento",
+      "personalInfo": "Informações pessoais",
+      "fullName": "Nome completo",
+      "dateOfBirth": "Data de nascimento",
+      "contactInfo": "Informações de contato",
+      "email": "E-mail",
+      "address": "Endereço",
+      "country": "País",
+      "financialInfo": "Informações financeiras",
+      "profession": "Profissão",
+      "monthlyIncome": "Renda mensal",
+      "close": "Fechar"
+    },
+    "profile": {
+      "title": "Configurações do perfil",
+      "phoneNumber": "Número de telefone",
+      "phoneHelper": "O número de telefone não pode ser alterado",
+      "firstName": "Nome",
+      "firstNamePlaceholder": "Digite seu nome",
+      "lastName": "Sobrenome",
+      "lastNamePlaceholder": "Digite seu sobrenome",
+      "email": "Endereço de e-mail",
+      "emailPlaceholder": "Digite seu e-mail",
+      "cancel": "Cancelar",
+      "save": "Salvar alterações",
+      "saving": "Salvando...",
+      "saved": "Perfil atualizado com sucesso",
+      "error": "Falha ao atualizar o perfil"
     }
   },
   "footer": {
-    "copyright": "© 2025 Monfinancement. Todos os direitos reservados.",
+    "copyright": "© 2026 Monfinancement. Todos os direitos reservados.",
     "privacy": "Política de privacidade",
     "terms": "Termos de serviço",
     "contact": "Entre em contato"

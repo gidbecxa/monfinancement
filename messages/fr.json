@@ -59,7 +59,8 @@
     "alreadyHaveAccount": "Vous avez déjà un compte ?",
     "dontHaveAccount": "Vous n'avez pas de compte ?",
     "pinRegeneratedTitle": "PIN régénéré",
-    "pinRegeneratedDesc": "Votre PIN a été automatiquement régénéré pour des raisons de sécurité"
+    "pinRegeneratedDesc": "Votre PIN a été automatiquement régénéré pour des raisons de sécurité",
+    "pinRegenerated": "PIN régénéré avec succès"
   },
   "home": {
     "title": "Bienvenue sur Monfinancement",
@@ -88,83 +89,206 @@
     "ctaSubtitle": "Rejoignez des milliers de clients satisfaits qui nous font confiance pour leurs besoins de financement",
     "ctaButton": "Commencer votre demande"
   },
-  "auth": {
-    "phoneNumber": "Numéro de téléphone",
-    "enterPhone": "Entrez votre numéro de téléphone",
-    "sendCode": "Envoyer le code",
-    "verificationCode": "Code de vérification",
-    "enterCode": "Entrez le code envoyé sur votre téléphone",
-    "verify": "Vérifier",
-    "invalidPhone": "Numéro de téléphone invalide",
-    "invalidCode": "Code de vérification invalide",
-    "loginSuccess": "Connexion réussie",
-    "loginError": "Échec de la connexion"
-  },
   "application": {
-    "title": "Demande de financement",
-    "step0": {
-      "title": "Montant du financement",
+    "loading": "Chargement...",
+    "savingDraft": "Enregistrement du brouillon...",
+    "draftSaved": "Brouillon enregistré avec succès",
+    "applicationStarted": "Demande créée avec succès",
+    "applicationSubmitted": "Demande soumise avec succès !",
+    "errorCreatingApplication": "Erreur lors de la création de la demande. Veuillez réessayer.",
+    "errorSubmitting": "Erreur lors de la soumission de la demande. Veuillez réessayer.",
+    "steps": {
       "amount": "Montant",
-      "currency": "Devise",
-      "next": "Continuer"
+      "personal": "Info personnelle",
+      "details": "Détails",
+      "complete": "Terminé"
+    },
+    "common": {
+      "buttons": {
+        "continue": "Continuer",
+        "next": "Suivant",
+        "back": "Retour",
+        "submit": "Soumettre la demande"
+      }
+    },
+    "step0": {
+      "title": "De quel montant de financement avez-vous besoin ?",
+      "description": "Entrez le montant que vous souhaitez demander",
+      "fields": {
+        "amount": {
+          "label": "Montant du financement",
+          "placeholder": "Entrez le montant",
+          "helper": "Entrez un montant entre 1 000 € et 10 000 000 €"
+        }
+      },
+      "minimum": "Minimum",
+      "maximum": "Maximum",
+      "secureNote": "🔒 Vos informations sont sécurisées et cryptées",
+      "errors": {
+        "invalidAmount": "Le montant doit être compris entre {min} € et {max} €"
+      }
     },
     "step1": {
-      "title": "Informations personnelles",
-      "firstName": "Prénom",
-      "lastName": "Nom",
-      "dateOfBirth": "Date de naissance",
-      "gender": "Genre",
-      "male": "Homme",
-      "female": "Femme",
-      "other": "Autre",
-      "preferNotToSay": "Préfère ne pas dire"
+      "title": "Parlez-nous de vous",
+      "description": "Veuillez fournir vos informations personnelles",
+      "fields": {
+        "firstName": {
+          "label": "Prénom",
+          "placeholder": "Jean"
+        },
+        "lastName": {
+          "label": "Nom",
+          "placeholder": "Dupont"
+        },
+        "dateOfBirth": {
+          "label": "Date de naissance",
+          "helper": "Vous devez avoir au moins 18 ans"
+        },
+        "gender": {
+          "label": "Genre (Optionnel)",
+          "placeholder": "Sélectionnez votre genre",
+          "optional": "Ce champ est optionnel",
+          "options": {
+            "male": "Homme",
+            "female": "Femme",
+            "other": "Autre",
+            "preferNotToSay": "Préfère ne pas dire"
+          }
+        }
+      }
     },
     "step2": {
-      "title": "Contact et détails du financement",
-      "email": "Adresse e-mail",
-      "address": "Adresse de résidence",
-      "country": "Pays de résidence",
-      "fundingType": "Type de financement",
-      "fundingReason": "Raison du financement",
-      "profession": "Profession",
-      "monthlyIncome": "Revenu mensuel"
+      "title": "Détails du financement",
+      "description": "Parlez-nous de votre demande de financement",
+      "sections": {
+        "contact": "Informations de contact",
+        "funding": "Informations sur le financement",
+        "financial": "Informations financières"
+      },
+      "fields": {
+        "email": {
+          "label": "Adresse e-mail",
+          "placeholder": "jean.dupont@example.com"
+        },
+        "address": {
+          "label": "Adresse résidentielle",
+          "placeholder": "Rue, Ville, Code postal"
+        },
+        "country": {
+          "label": "Pays de résidence",
+          "placeholder": "Entrez votre pays"
+        },
+        "fundingType": {
+          "label": "Type de financement"
+        },
+        "fundingReason": {
+          "label": "Raison du financement",
+          "placeholder": "Expliquez pourquoi vous avez besoin de ce financement..."
+        },
+        "profession": {
+          "label": "Profession",
+          "placeholder": "Votre profession actuelle"
+        },
+        "monthlyIncome": {
+          "label": "Revenu mensuel",
+          "placeholder": "Entrez le montant",
+          "helper": "Entrez votre revenu mensuel moyen"
+        }
+      }
     },
     "step3": {
-      "title": "Téléchargement de documents",
-      "identityFront": "Carte d'identité (Recto)",
-      "identityBack": "Carte d'identité (Verso)",
-      "rib": "RIB (Relevé d'identité bancaire)",
-      "upload": "Télécharger",
-      "uploading": "Téléchargement en cours...",
-      "uploaded": "Téléchargé",
-      "maxSize": "Taille maximale du fichier : 10 Mo"
-    },
-    "step4": {
-      "title": "Révision et soumission",
-      "review": "Révisez votre demande",
-      "submit": "Soumettre la demande",
-      "applicationNumber": "Numéro de demande",
-      "success": "Demande soumise avec succès !"
+      "title": "Demande soumise avec succès !",
+      "description": "Merci d'avoir soumis votre demande de financement",
+      "applicationNumberLabel": "Votre numéro de demande",
+      "copyApplicationNumber": "Copier dans le presse-papiers",
+      "applicationNumberCopied": "Numéro de demande copié !",
+      "saveApplicationNumber": "Veuillez enregistrer ce numéro pour vos dossiers",
+      "nextStepsTitle": "Prochaines étapes",
+      "nextStepsMessage": "Veuillez contacter un conseiller assigné pour le suivi approprié de votre demande.",
+      "contactAdvisor": "Contactez votre conseiller :",
+      "contactWhatsApp": "Discuter sur WhatsApp",
+      "contactEmail": "Envoyer un e-mail",
+      "importantNotice": "Avis important",
+      "notice1": "Conservez votre numéro de demande en sécurité",
+      "notice2": "Un conseiller vous contactera dans les 48 heures",
+      "notice3": "Consultez votre e-mail pour la confirmation",
+      "returnToDashboard": "Retour au tableau de bord"
     }
   },
   "dashboard": {
     "title": "Mon tableau de bord",
+    "subtitle": "Suivez et gérez vos demandes de financement",
+    "profileSettings": "Paramètres du profil",
+    "newApplication": "Nouvelle demande",
+    "myApplications": "Mes demandes",
+    "applicationsSubtitle": "Consultez et gérez toutes vos demandes de financement",
+    "loadingApplications": "Chargement des demandes...",
+    "loading": "Chargement...",
+    "noApplications": "Aucune demande pour le moment",
+    "noApplicationsDesc": "Vous n'avez pas encore créé de demande de financement",
+    "createFirstApplication": "Créer votre première demande",
     "applicationNumber": "Numéro de demande",
     "status": "Statut",
-    "submittedDate": "Date de soumission",
     "amount": "Montant",
-    "noApplications": "Aucune demande pour le moment",
-    "createNew": "Créer une nouvelle demande",
+    "created": "Créé",
+    "draftProgress": "Étape {step} sur {total}",
+    "continueDraft": "Continuer",
+    "viewDetails": "Voir les détails",
     "statuses": {
       "draft": "Brouillon",
       "submitted": "Soumis",
       "under_review": "En cours d'examen",
       "approved": "Approuvé",
       "rejected": "Rejeté"
+    },
+    "stats": {
+      "total": "Total",
+      "draft": "Brouillon",
+      "submitted": "Soumis",
+      "underReview": "En examen",
+      "approved": "Approuvé",
+      "rejected": "Rejeté"
+    },
+    "detail": {
+      "title": "Détails de la demande",
+      "status": "Statut",
+      "created": "Créé",
+      "submitted": "Soumis",
+      "fundingInfo": "Informations sur le financement",
+      "amount": "Montant demandé",
+      "fundingType": "Type de financement",
+      "fundingReason": "Raison du financement",
+      "personalInfo": "Informations personnelles",
+      "fullName": "Nom complet",
+      "dateOfBirth": "Date de naissance",
+      "contactInfo": "Informations de contact",
+      "email": "Email",
+      "address": "Adresse",
+      "country": "Pays",
+      "financialInfo": "Informations financières",
+      "profession": "Profession",
+      "monthlyIncome": "Revenu mensuel",
+      "close": "Fermer"
+    },
+    "profile": {
+      "title": "Paramètres du profil",
+      "phoneNumber": "Numéro de téléphone",
+      "phoneHelper": "Le numéro de téléphone ne peut pas être modifié",
+      "firstName": "Prénom",
+      "firstNamePlaceholder": "Entrez votre prénom",
+      "lastName": "Nom",
+      "lastNamePlaceholder": "Entrez votre nom",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "Entrez votre e-mail",
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "saving": "Enregistrement...",
+      "saved": "Profil mis à jour avec succès",
+      "error": "Échec de la mise à jour du profil"
     }
   },
   "footer": {
-    "copyright": "© 2025 Monfinancement. Tous droits réservés.",
+    "copyright": "© 2026 Monfinancement. Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
     "contact": "Nous contacter"

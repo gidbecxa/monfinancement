@@ -141,4 +141,20 @@ export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
 
 CardFooter.displayName = 'CardFooter'
 
-export default Card
+// Attach sub-components to Card
+type CardComponent = typeof Card & {
+  Header: typeof CardHeader
+  Title: typeof CardTitle
+  Description: typeof CardDescription
+  Content: typeof CardContent
+  Footer: typeof CardFooter
+}
+
+const CardWithSubComponents = Card as CardComponent
+CardWithSubComponents.Header = CardHeader
+CardWithSubComponents.Title = CardTitle
+CardWithSubComponents.Description = CardDescription
+CardWithSubComponents.Content = CardContent
+CardWithSubComponents.Footer = CardFooter
+
+export default CardWithSubComponents

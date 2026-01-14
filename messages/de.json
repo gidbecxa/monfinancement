@@ -59,7 +59,14 @@
     "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
     "dontHaveAccount": "Haben Sie noch kein Konto?",
     "pinRegeneratedTitle": "PIN regeneriert",
-    "pinRegeneratedDesc": "Ihre PIN wurde automatisch aus Sicherheitsgründen regeneriert"
+    "pinRegeneratedDesc": "Ihre PIN wurde automatisch aus Sicherheitsgründen regeneriert",
+    "enterPhone": "Geben Sie Ihre Telefonnummer ein",
+    "sendCode": "Code senden",
+    "verificationCode": "Bestätigungscode",
+    "enterCode": "Geben Sie den an Ihr Telefon gesendeten Code ein",
+    "verify": "Überprüfen",
+    "invalidCode": "Ungültiger Bestätigungscode",
+    "loginError": "Anmeldung fehlgeschlagen"
   },
   "home": {
     "title": "Willkommen bei Monfinancement",
@@ -88,83 +95,208 @@
     "ctaSubtitle": "Schließen Sie sich Tausenden zufriedener Kunden an, die uns mit ihren Finanzierungsbedürfnissen vertrauen",
     "ctaButton": "Starten Sie Ihren Antrag"
   },
-  "auth": {
-    "phoneNumber": "Telefonnummer",
-    "enterPhone": "Geben Sie Ihre Telefonnummer ein",
-    "sendCode": "Code senden",
-    "verificationCode": "Bestätigungscode",
-    "enterCode": "Geben Sie den an Ihr Telefon gesendeten Code ein",
-    "verify": "Überprüfen",
-    "invalidPhone": "Ungültige Telefonnummer",
-    "invalidCode": "Ungültiger Bestätigungscode",
-    "loginSuccess": "Anmeldung erfolgreich",
-    "loginError": "Anmeldung fehlgeschlagen"
-  },
   "application": {
-    "title": "Finanzierungsantrag",
-    "step0": {
-      "title": "Finanzierungsbetrag",
+    "loading": "Laden...",
+    "savingDraft": "Entwurf wird gespeichert...",
+    "draftSaved": "Entwurf erfolgreich gespeichert",
+    "applicationStarted": "Antrag erfolgreich erstellt",
+    "applicationSubmitted": "Antrag erfolgreich eingereicht!",
+    "errorCreatingApplication": "Fehler beim Erstellen des Antrags. Bitte versuchen Sie es erneut.",
+    "errorSubmitting": "Fehler beim Einreichen des Antrags. Bitte versuchen Sie es erneut.",
+    "steps": {
       "amount": "Betrag",
-      "currency": "Währung",
-      "next": "Weiter"
+      "personal": "Persönliche Info",
+      "details": "Details",
+      "complete": "Abgeschlossen"
+    },
+    "common": {
+      "buttons": {
+        "continue": "Weiter",
+        "next": "Weiter",
+        "back": "Zurück",
+        "submit": "Antrag absenden"
+      }
+    },
+    "step0": {
+      "title": "Wie viel Finanzierung benötigen Sie?",
+      "description": "Geben Sie den gewünschten Betrag ein",
+      "fields": {
+        "amount": {
+          "label": "Finanzierungsbetrag",
+          "placeholder": "Betrag eingeben",
+          "helper": "Geben Sie einen Betrag zwischen 1.000 € und 10.000.000 € ein"
+        }
+      },
+      "minimum": "Minimum",
+      "maximum": "Maximum",
+      "secureNote": "🔒 Ihre Daten sind sicher und verschlüsselt",
+      "errors": {
+        "invalidAmount": "Der Betrag muss zwischen {min} € und {max} € liegen"
+      }
     },
     "step1": {
-      "title": "Persönliche Informationen",
-      "firstName": "Vorname",
-      "lastName": "Nachname",
-      "dateOfBirth": "Geburtsdatum",
-      "gender": "Geschlecht",
-      "male": "Männlich",
-      "female": "Weiblich",
-      "other": "Andere",
-      "preferNotToSay": "Möchte nicht sagen"
+      "title": "Erzählen Sie uns von sich",
+      "description": "Bitte geben Sie Ihre persönlichen Informationen an",
+      "fields": {
+        "firstName": {
+          "label": "Vorname",
+          "placeholder": "Max"
+        },
+        "lastName": {
+          "label": "Nachname",
+          "placeholder": "Mustermann"
+        },
+        "dateOfBirth": {
+          "label": "Geburtsdatum",
+          "helper": "Sie müssen mindestens 18 Jahre alt sein"
+        },
+        "gender": {
+          "label": "Geschlecht (Optional)",
+          "placeholder": "Wählen Sie Ihr Geschlecht",
+          "optional": "Dieses Feld ist optional",
+          "options": {
+            "male": "Männlich",
+            "female": "Weiblich",
+            "other": "Andere",
+            "preferNotToSay": "Möchte nicht sagen"
+          }
+        }
+      }
     },
     "step2": {
-      "title": "Kontakt- und Finanzierungsdetails",
-      "email": "E-Mail-Adresse",
-      "address": "Wohnadresse",
-      "country": "Wohnsitzland",
-      "fundingType": "Finanzierungsart",
-      "fundingReason": "Grund für die Finanzierung",
-      "profession": "Beruf",
-      "monthlyIncome": "Monatliches Einkommen"
+      "title": "Finanzierungsdetails",
+      "description": "Erzählen Sie uns mehr über Ihren Finanzierungsantrag",
+      "sections": {
+        "contact": "Kontaktinformationen",
+        "funding": "Finanzierungsinformationen",
+        "financial": "Finanzielle Informationen"
+      },
+      "fields": {
+        "email": {
+          "label": "E-Mail-Adresse",
+          "placeholder": "max.mustermann@beispiel.de"
+        },
+        "address": {
+          "label": "Wohnadresse",
+          "placeholder": "Straße, Stadt, Postleitzahl"
+        },
+        "country": {
+          "label": "Wohnsitzland",
+          "placeholder": "Geben Sie Ihr Land ein"
+        },
+        "fundingType": {
+          "label": "Finanzierungsart"
+        },
+        "fundingReason": {
+          "label": "Grund für die Finanzierung",
+          "placeholder": "Erklären Sie, warum Sie diese Finanzierung benötigen..."
+        },
+        "profession": {
+          "label": "Beruf",
+          "placeholder": "Ihr aktueller Beruf"
+        },
+        "monthlyIncome": {
+          "label": "Monatliches Einkommen",
+          "placeholder": "Betrag eingeben",
+          "helper": "Geben Sie Ihr durchschnittliches monatliches Einkommen ein"
+        }
+      }
     },
     "step3": {
-      "title": "Dokumente hochladen",
-      "identityFront": "Personalausweis (Vorderseite)",
-      "identityBack": "Personalausweis (Rückseite)",
-      "rib": "RIB (Bankdaten)",
-      "upload": "Hochladen",
-      "uploading": "Wird hochgeladen...",
-      "uploaded": "Hochgeladen",
-      "maxSize": "Maximale Dateigröße: 10MB"
-    },
-    "step4": {
-      "title": "Überprüfen und absenden",
-      "review": "Überprüfen Sie Ihren Antrag",
-      "submit": "Antrag absenden",
-      "applicationNumber": "Antragsnummer",
-      "success": "Antrag erfolgreich eingereicht!"
+      "title": "Antrag erfolgreich eingereicht!",
+      "description": "Vielen Dank für die Einreichung Ihres Finanzierungsantrags",
+      "applicationNumberLabel": "Ihre Antragsnummer",
+      "copyApplicationNumber": "In Zwischenablage kopieren",
+      "applicationNumberCopied": "Antragsnummer kopiert!",
+      "saveApplicationNumber": "Bitte speichern Sie diese Nummer für Ihre Unterlagen",
+      "nextStepsTitle": "Nächste Schritte",
+      "nextStepsMessage": "Bitte kontaktieren Sie einen zugewiesenen Berater für die ordnungsgemäße Nachverfolgung Ihres Antrags.",
+      "contactAdvisor": "Kontaktieren Sie Ihren Berater:",
+      "contactWhatsApp": "Chat auf WhatsApp",
+      "contactEmail": "E-Mail senden",
+      "importantNotice": "Wichtiger Hinweis",
+      "notice1": "Bewahren Sie Ihre Antragsnummer sicher auf",
+      "notice2": "Ein Berater wird Sie innerhalb von 48 Stunden kontaktieren",
+      "notice3": "Überprüfen Sie Ihre E-Mail für die Bestätigung",
+      "returnToDashboard": "Zurück zum Dashboard"
     }
   },
   "dashboard": {
     "title": "Mein Dashboard",
+    "subtitle": "Verfolgen und verwalten Sie Ihre Finanzierungsanträge",
     "applicationNumber": "Antragsnummer",
     "status": "Status",
     "submittedDate": "Eingereicht am",
     "amount": "Betrag",
     "noApplications": "Noch keine Anträge",
+    "noApplicationsDesc": "Sie haben noch keine Finanzierungsanträge erstellt",
     "createNew": "Neuen Antrag erstellen",
+    "profileSettings": "Profileinstellungen",
+    "newApplication": "Neuer Antrag",
+    "myApplications": "Meine Anträge",
+    "applicationsSubtitle": "Alle Ihre Finanzierungsanträge anzeigen und verwalten",
+    "loadingApplications": "Anträge werden geladen...",
+    "loading": "Laden...",
+    "createFirstApplication": "Erstellen Sie Ihren ersten Antrag",
+    "created": "Erstellt",
+    "draftProgress": "Schritt {step} von {total}",
+    "continueDraft": "Fortsetzen",
+    "viewDetails": "Details anzeigen",
     "statuses": {
       "draft": "Entwurf",
       "submitted": "Eingereicht",
       "under_review": "Wird überprüft",
       "approved": "Genehmigt",
       "rejected": "Abgelehnt"
+    },
+    "stats": {
+      "total": "Gesamt",
+      "draft": "Entwurf",
+      "submitted": "Eingereicht",
+      "underReview": "In Prüfung",
+      "approved": "Genehmigt",
+      "rejected": "Abgelehnt"
+    },
+    "detail": {
+      "title": "Antragsdetails",
+      "status": "Status",
+      "created": "Erstellt",
+      "submitted": "Eingereicht",
+      "fundingInfo": "Finanzierungsinformationen",
+      "amount": "Beantragter Betrag",
+      "fundingType": "Finanzierungsart",
+      "fundingReason": "Grund für die Finanzierung",
+      "personalInfo": "Persönliche Informationen",
+      "fullName": "Vollständiger Name",
+      "dateOfBirth": "Geburtsdatum",
+      "contactInfo": "Kontaktinformationen",
+      "email": "E-Mail",
+      "address": "Adresse",
+      "country": "Land",
+      "financialInfo": "Finanzielle Informationen",
+      "profession": "Beruf",
+      "monthlyIncome": "Monatliches Einkommen",
+      "close": "Schließen"
+    },
+    "profile": {
+      "title": "Profileinstellungen",
+      "phoneNumber": "Telefonnummer",
+      "phoneHelper": "Telefonnummer kann nicht geändert werden",
+      "firstName": "Vorname",
+      "firstNamePlaceholder": "Geben Sie Ihren Vornamen ein",
+      "lastName": "Nachname",
+      "lastNamePlaceholder": "Geben Sie Ihren Nachnamen ein",
+      "email": "E-Mail-Adresse",
+      "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+      "cancel": "Abbrechen",
+      "save": "Änderungen speichern",
+      "saving": "Speichern...",
+      "saved": "Profil erfolgreich aktualisiert",
+      "error": "Profil konnte nicht aktualisiert werden"
     }
   },
   "footer": {
-    "copyright": "© 2025 Monfinancement. Alle Rechte vorbehalten.",
+    "copyright": "© 2026 Monfinancement. Alle Rechte vorbehalten.",
     "privacy": "Datenschutzrichtlinie",
     "terms": "Nutzungsbedingungen",
     "contact": "Kontaktieren Sie uns"

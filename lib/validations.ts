@@ -14,17 +14,17 @@ export const step0Schema = z.object({
  * Step 1: Personal Information Schema
  */
 export const step1Schema = z.object({
-  first_name: z
+  firstName: z
     .string()
     .min(2, 'First name must be at least 2 characters')
     .max(100, 'First name must be less than 100 characters')
     .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'First name contains invalid characters'),
-  last_name: z
+  lastName: z
     .string()
     .min(2, 'Last name must be at least 2 characters')
     .max(100, 'Last name must be less than 100 characters')
     .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'Last name contains invalid characters'),
-  date_of_birth: z
+  dateOfBirth: z
     .string()
     .refine((date) => {
       const birthDate = new Date(date)
@@ -32,7 +32,7 @@ export const step1Schema = z.object({
       const age = today.getFullYear() - birthDate.getFullYear()
       return age >= 18 && age <= 100
     }, 'You must be between 18 and 100 years old'),
-  gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']),
+  gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']).optional(),
 })
 
 /**
@@ -43,17 +43,17 @@ export const step2Schema = z.object({
     .string()
     .email('Invalid email address')
     .toLowerCase(),
-  residential_address: z
+  residentialAddress: z
     .string()
     .min(10, 'Address must be at least 10 characters')
     .max(500, 'Address must be less than 500 characters'),
-  country_of_residence: z
+  countryOfResidence: z
     .string()
     .min(2, 'Please select a country'),
-  funding_type: z
+  fundingType: z
     .string()
     .min(2, 'Please select a funding type'),
-  funding_reason: z
+  fundingReason: z
     .string()
     .min(20, 'Please provide at least 20 characters explaining your funding reason')
     .max(1000, 'Funding reason must be less than 1000 characters'),
@@ -61,7 +61,7 @@ export const step2Schema = z.object({
     .string()
     .min(2, 'Profession must be at least 2 characters')
     .max(100, 'Profession must be less than 100 characters'),
-  monthly_income: z
+  monthlyIncome: z
     .number()
     .min(0, 'Monthly income must be a positive number')
     .max(1000000000, 'Please enter a valid monthly income'),

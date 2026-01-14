@@ -59,7 +59,8 @@
     "alreadyHaveAccount": "Already have an account?",
     "dontHaveAccount": "Don't have an account?",
     "pinRegeneratedTitle": "PIN Regenerated",
-    "pinRegeneratedDesc": "Your PIN has been automatically regenerated for security purposes"
+    "pinRegeneratedDesc": "Your PIN has been automatically regenerated for security purposes",
+    "pinRegenerated": "PIN regenerated successfully"
   },
   "home": {
     "title": "Welcome to Monfinancement",
@@ -88,83 +89,206 @@
     "ctaSubtitle": "Join thousands of satisfied customers who trust us with their financing needs",
     "ctaButton": "Start Your Application"
   },
-  "auth": {
-    "phoneNumber": "Phone Number",
-    "enterPhone": "Enter your phone number",
-    "sendCode": "Send Code",
-    "verificationCode": "Verification Code",
-    "enterCode": "Enter the code sent to your phone",
-    "verify": "Verify",
-    "invalidPhone": "Invalid phone number",
-    "invalidCode": "Invalid verification code",
-    "loginSuccess": "Login successful",
-    "loginError": "Login failed"
-  },
   "application": {
-    "title": "Funding Application",
-    "step0": {
-      "title": "Funding Amount",
+    "loading": "Loading...",
+    "savingDraft": "Saving draft...",
+    "draftSaved": "Draft saved successfully",
+    "applicationStarted": "Application created successfully",
+    "applicationSubmitted": "Application submitted successfully!",
+    "errorCreatingApplication": "Error creating application. Please try again.",
+    "errorSubmitting": "Error submitting application. Please try again.",
+    "steps": {
       "amount": "Amount",
-      "currency": "Currency",
-      "next": "Continue"
+      "personal": "Personal Info",
+      "details": "Details",
+      "complete": "Complete"
+    },
+    "common": {
+      "buttons": {
+        "continue": "Continue",
+        "next": "Next",
+        "back": "Back",
+        "submit": "Submit Application"
+      }
+    },
+    "step0": {
+      "title": "How much funding do you need?",
+      "description": "Enter the amount you wish to request",
+      "fields": {
+        "amount": {
+          "label": "Funding Amount",
+          "placeholder": "Enter amount",
+          "helper": "Enter an amount between €1,000 and €10,000,000"
+        }
+      },
+      "minimum": "Minimum",
+      "maximum": "Maximum",
+      "secureNote": "🔒 Your information is secure and encrypted",
+      "errors": {
+        "invalidAmount": "Amount must be between €{min} and €{max}"
+      }
     },
     "step1": {
-      "title": "Personal Information",
-      "firstName": "First Name",
-      "lastName": "Last Name",
-      "dateOfBirth": "Date of Birth",
-      "gender": "Gender",
-      "male": "Male",
-      "female": "Female",
-      "other": "Other",
-      "preferNotToSay": "Prefer not to say"
+      "title": "Tell us about yourself",
+      "description": "Please provide your personal information",
+      "fields": {
+        "firstName": {
+          "label": "First Name",
+          "placeholder": "John"
+        },
+        "lastName": {
+          "label": "Last Name",
+          "placeholder": "Doe"
+        },
+        "dateOfBirth": {
+          "label": "Date of Birth",
+          "helper": "You must be at least 18 years old"
+        },
+        "gender": {
+          "label": "Gender (Optional)",
+          "placeholder": "Select your gender",
+          "optional": "This field is optional",
+          "options": {
+            "male": "Male",
+            "female": "Female",
+            "other": "Other",
+            "preferNotToSay": "Prefer not to say"
+          }
+        }
+      }
     },
     "step2": {
-      "title": "Contact & Funding Details",
-      "email": "Email Address",
-      "address": "Residential Address",
-      "country": "Country of Residence",
-      "fundingType": "Funding Type",
-      "fundingReason": "Reason for Funding",
-      "profession": "Profession",
-      "monthlyIncome": "Monthly Income"
+      "title": "Funding Details",
+      "description": "Tell us more about your funding request",
+      "sections": {
+        "contact": "Contact Information",
+        "funding": "Funding Information",
+        "financial": "Financial Information"
+      },
+      "fields": {
+        "email": {
+          "label": "Email Address",
+          "placeholder": "john.doe@example.com"
+        },
+        "address": {
+          "label": "Residential Address",
+          "placeholder": "Street, City, Postal Code"
+        },
+        "country": {
+          "label": "Country of Residence",
+          "placeholder": "Enter your country"
+        },
+        "fundingType": {
+          "label": "Type of Funding"
+        },
+        "fundingReason": {
+          "label": "Reason for Funding",
+          "placeholder": "Explain why you need this funding..."
+        },
+        "profession": {
+          "label": "Profession",
+          "placeholder": "Your current profession"
+        },
+        "monthlyIncome": {
+          "label": "Monthly Income",
+          "placeholder": "Enter amount",
+          "helper": "Enter your average monthly income"
+        }
+      }
     },
     "step3": {
-      "title": "Document Upload",
-      "identityFront": "Identity Card (Front)",
-      "identityBack": "Identity Card (Back)",
-      "rib": "RIB (Bank Details)",
-      "upload": "Upload",
-      "uploading": "Uploading...",
-      "uploaded": "Uploaded",
-      "maxSize": "Max file size: 10MB"
-    },
-    "step4": {
-      "title": "Review & Submit",
-      "review": "Review your application",
-      "submit": "Submit Application",
-      "applicationNumber": "Application Number",
-      "success": "Application submitted successfully!"
+      "title": "Application Submitted Successfully!",
+      "description": "Thank you for submitting your funding application",
+      "applicationNumberLabel": "Your Application Number",
+      "copyApplicationNumber": "Copy to clipboard",
+      "applicationNumberCopied": "Application number copied!",
+      "saveApplicationNumber": "Please save this number for your records",
+      "nextStepsTitle": "Next Steps",
+      "nextStepsMessage": "Please contact an assigned advisor for proper follow-up of your application.",
+      "contactAdvisor": "Contact your advisor:",
+      "contactWhatsApp": "Chat on WhatsApp",
+      "contactEmail": "Send Email",
+      "importantNotice": "Important Notice",
+      "notice1": "Keep your application number safe",
+      "notice2": "An advisor will contact you within 48 hours",
+      "notice3": "Check your email for confirmation",
+      "returnToDashboard": "Return to Dashboard"
     }
   },
   "dashboard": {
     "title": "My Dashboard",
+    "subtitle": "Track and manage your funding applications",
+    "profileSettings": "Profile Settings",
+    "newApplication": "New Application",
+    "myApplications": "My Applications",
+    "applicationsSubtitle": "View and manage all your funding requests",
+    "loadingApplications": "Loading applications...",
+    "loading": "Loading...",
+    "noApplications": "No Applications Yet",
+    "noApplicationsDesc": "You haven't created any funding applications yet",
+    "createFirstApplication": "Create Your First Application",
     "applicationNumber": "Application Number",
     "status": "Status",
-    "submittedDate": "Submitted Date",
     "amount": "Amount",
-    "noApplications": "No applications yet",
-    "createNew": "Create New Application",
+    "created": "Created",
+    "draftProgress": "Step {step} of {total}",
+    "continueDraft": "Continue",
+    "viewDetails": "View Details",
     "statuses": {
       "draft": "Draft",
       "submitted": "Submitted",
       "under_review": "Under Review",
       "approved": "Approved",
       "rejected": "Rejected"
+    },
+    "stats": {
+      "total": "Total",
+      "draft": "Draft",
+      "submitted": "Submitted",
+      "underReview": "Under Review",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    },
+    "detail": {
+      "title": "Application Details",
+      "status": "Status",
+      "created": "Created",
+      "submitted": "Submitted",
+      "fundingInfo": "Funding Information",
+      "amount": "Requested Amount",
+      "fundingType": "Funding Type",
+      "fundingReason": "Reason for Funding",
+      "personalInfo": "Personal Information",
+      "fullName": "Full Name",
+      "dateOfBirth": "Date of Birth",
+      "contactInfo": "Contact Information",
+      "email": "Email",
+      "address": "Address",
+      "country": "Country",
+      "financialInfo": "Financial Information",
+      "profession": "Profession",
+      "monthlyIncome": "Monthly Income",
+      "close": "Close"
+    },
+    "profile": {
+      "title": "Profile Settings",
+      "phoneNumber": "Phone Number",
+      "phoneHelper": "Phone number cannot be changed",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter your email",
+      "cancel": "Cancel",
+      "save": "Save Changes",
+      "saving": "Saving...",
+      "saved": "Profile updated successfully",
+      "error": "Failed to update profile"
     }
   },
   "footer": {
-    "copyright": "© 2025 Monfinancement. All rights reserved.",
+    "copyright": "© 2026 Monfinancement. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact Us"
