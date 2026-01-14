@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from '@/i18n/routing'
 import { useTranslations } from 'next-intl'
 import { loginUser } from '@/lib/auth/client'
+import { getPostLoginRedirect } from '@/lib/auth/redirect'
 import { isValidPhoneNumber } from '@/utils/helpers'
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
@@ -64,15 +65,24 @@ export default function LoginPage() {
         toast.success(t('pinRegenerated'))
       } else {
         toast.success(t('loginSuccess'))
-        router.push('/dashboard')
+        
+        // Determine where to redirect based on user's application status
+        const redirect = await getPostLoginRedirect(response.user_id)
+        router.push(redirect.path)
       }
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error'
       toast.error(errorMessage || t('loginFailed'))
     } finally {
       setLoading(false)
+    }async () => {
+    const userId = localStorage.getItem('user_id')
+    if (userId) {
+      const redirect = await getPostLoginRedirect(userId)
+      router.push(redirect.path)
+    } else {
+      router.push('/dashboard')
     }
-  }
 
   const handleContinueToDashboard = () => {
     router.push('/dashboard')
