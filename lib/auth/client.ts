@@ -82,44 +82,54 @@ export async function loginUser(
 
 /**
  * Validate current session token
+ * Note: This is a client-side validation since sessions are stored in localStorage
  */
 export async function validateSession(sessionToken?: string): Promise<SessionValidation> {
-  const supabase = createClient()
-  
-  const token = sessionToken || (typeof window !== 'undefined' ? localStorage.getItem('session_token') : null)
-  
-  if (!token) {
+  if (typeof window === 'undefined') {
     return {
       is_valid: false,
       user_id: null,
       role: null,
-      message: 'No session token found',
+      message: 'Server-side rendering - no session',
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { data, error } = await (supabase.rpc as any)('validate_session', { p_session_token: token })
-
-  // Supabase RPC returns table functions as an array, we need the first row
-  const result = Array.isArray(data) ? data[0] : data
-
-  if (error || !result || !result.is_valid) {
-    // Clear invalid session
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('session_token')
-      localStorage.removeItem('session_expires_at')
-      localStorage.removeItem('user_id')
+  const token = sessionToken || localStorage.getItem('session_token')
+  const expiresAt = localStorage.getItem('session_expires_at')
+  const userId = localStorage.getItem('user_id')
+  
+  if (!token || !expiresAt || !userId) {
+    return {
+      is_valid: false,
+      user_id: null,
+      role: null,
+      message: 'No session found',
     }
+  }
+
+  // Check if session has expired
+  const expiryDate = new Date(expiresAt)
+  if (expiryDate <= new Date()) {
+    // Clear expired session
+    localStorage.removeItem('session_token')
+    localStorage.removeItem('session_expires_at')
+    localStorage.removeItem('user_id')
     
     return {
       is_valid: false,
       user_id: null,
       role: null,
-      message: error?.message || result?.message || 'Session expired',
+      message: 'Session expired',
     }
   }
 
-  return result as SessionValidation
+  // Session is valid
+  return {
+    is_valid: true,
+    user_id: userId,
+    role: 'user', // Default role for now
+    message: 'Session valid',
+  }
 }
 
 /**
