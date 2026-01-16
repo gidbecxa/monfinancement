@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from 'next/navigation'
+import { useRouter } from '@/i18n/routing'
 import { createClient } from '@/lib/supabase/client'
+import { validateSession } from '@/lib/auth/client'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { Plus, FileText } from 'lucide-react'
@@ -46,16 +47,16 @@ export default function DashboardPage() {
   // Auth check
   useEffect(() => {
     const checkAuth = async () => {
-      const { data: { user: authUser } } = await supabase.auth.getUser()
-      if (!authUser) {
-        router.push('/login')
+      const session = await validateSession()
+      if (!session.is_valid || !session.user_id) {
+        router.push('/auth/login')
         return
       }
-      setUser({ user_id: authUser.id })
+      setUser({ user_id: session.user_id })
       setAuthLoading(false)
     }
     checkAuth()
-  }, [router, supabase])
+  }, [router])
 
   // Load applications
   useEffect(() => {
