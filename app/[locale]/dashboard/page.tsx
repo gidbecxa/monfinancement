@@ -68,16 +68,21 @@ export default function DashboardPage() {
         return
       }
       
-      // Fetch user info
-      const { data: userData } = await supabase
-        .from('users')
+      // Try to fetch first name from the most recent application
+      // (first_name in users table stores hashed PIN, not actual name)
+      const { data: appData } = await supabase
+        .from('funding_applications')
         .select('first_name')
-        .eq('id', session.user_id)
+        .eq('user_id', session.user_id)
+        .order('created_at', { ascending: false })
+        .limit(1)
         .single()
+      
+      const firstName = appData ? (appData as { first_name?: string }).first_name : undefined
       
       setUser({ 
         user_id: session.user_id, 
-        first_name: userData ? (userData as unknown as { first_name?: string }).first_name : undefined 
+        first_name: firstName 
       })
       setAuthLoading(false)
     }
