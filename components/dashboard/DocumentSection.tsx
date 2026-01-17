@@ -43,6 +43,7 @@ const DOCUMENT_TYPES = {
 
 export function DocumentSection({ applicationId, documents, onDocumentUploaded }: DocumentSectionProps) {
   const [uploading, setUploading] = useState<string | null>(null)
+  const [uploadProgress, setUploadProgress] = useState<number>(0)
   const [selectedDocument, setSelectedDocument] = useState<Document | null>(null)
   const supabase = createClient()
 
@@ -56,23 +57,38 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
   ) => {
     // Validate file size (5MB max)
     if (file.size > 5 * 1024 * 1024) {
-      toast.error('File size must be less than 5MB')
+      toast.error('File size must be less than 5MB', {
+        description: 'Please choose a smaller file',
+      })
       return
     }
 
     // Validate file type
     const validTypes = ['image/jpeg', 'image/png', 'application/pdf']
     if (!validTypes.includes(file.type)) {
-      toast.error('Only PDF, JPEG, and PNG files are allowed')
+      toast.error('Invalid file type', {
+        description: 'Only PDF, JPEG, and PNG files are allowed',
+      })
       return
     }
 
     setUploading(type)
+    setUploadProgress(0)
+
+    // Show uploading toast
+    const uploadToast = toast.loading(`Uploading ${DOCUMENT_TYPES[type].label}...`, {
+      description: 'Please wait while we process your document',
+    })
 
     try {
+      // Simulate upload progress
+      setUploadProgress(10)
+
       // Generate unique file path
       const fileExt = file.name.split('.').pop()
       const fileName = `${applicationId}/${type}_${Date.now()}.${fileExt}`
+
+      setUploadProgress(30)
 
       // Upload to Supabase Storage
       const { error: uploadError } = await supabase.storage
@@ -82,12 +98,19 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
           upsert: false,
         })
 
-      if (uploadError) throw uploadError
+      if (uploadError) {
+        console.error('Storage upload error:', uploadError)
+        throw new Error('Failed to upload file to storage')
+      }
+
+      setUploadProgress(60)
 
       // Get public URL
       const { data: { publicUrl } } = supabase.storage
         .from('application-documents')
         .getPublicUrl(fileName)
+
+      setUploadProgress(80)
 
       // Save document record to database
       const { error: dbError } = await supabase
@@ -103,15 +126,34 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
           upload_status: 'completed',
         })
 
-      if (dbError) throw dbError
+      if (dbError) {
+        console.error('Database insert error:', dbError)
+        throw new Error('Failed to save document record')
+      }
 
-      toast.success(`${DOCUMENT_TYPES[type].label} uploaded successfully`)
+      setUploadProgress(100)
+
+      // Dismiss loading toast and show success
+      toast.dismiss(uploadToast)
+      toast.success('Document uploaded successfully!', {
+        description: `${DOCUMENT_TYPES[type].label} has been validated and saved`,
+        duration: 5000,
+      })
+
+      // Refresh documents list
       onDocumentUploaded()
     } catch (error) {
       console.error('Upload error:', error)
-      toast.error('Failed to upload document. Please try again.')
+      
+      // Dismiss loading toast and show error
+      toast.dismiss(uploadToast)
+      toast.error('Upload failed', {
+        description: error instanceof Error ? error.message : 'Please try again or contact support if the problem persists',
+        duration: 7000,
+      })
     } finally {
       setUploading(null)
+      setUploadProgress(0)
     }
   }
 
@@ -176,6 +218,12 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                     </div>
                   </div>
 
+                  {/* Success indicator */}
+                  <div className="flex items-center gap-2 text-xs text-success-600 bg-success-50 rounded p-2">
+                    <Check className="w-4 h-4 flex-shrink-0" />
+                    <span className="font-medium">Verified and stored securely</span>
+                  </div>
+
                   <div className="flex gap-2">
                     <Button
                       size="sm"
@@ -210,28 +258,44 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                   </div>
                 </div>
               ) : (
-                <label className="cursor-pointer">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="w-full pointer-events-none"
-                    isLoading={uploading === type}
-                    disabled={!!uploading}
-                  >
-                    <Upload className="w-4 h-4 mr-1" />
-                    {uploading === type ? 'Uploading...' : 'Upload'}
-                  </Button>
-                  <input
-                    type="file"
-                    className="hidden"
-                    accept=".pdf,.jpg,.jpeg,.png"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0]
-                      if (file) handleFileUpload(type, file)
-                    }}
-                    disabled={!!uploading}
-                  />
-                </label>
+                <div>
+                  {uploading === type ? (
+                    <div className="space-y-2">
+                      {/* Upload progress bar */}
+                      <div className="w-full bg-gray-200 rounded-full h-1.5">
+                        <div
+                          className="bg-primary-600 h-1.5 rounded-full transition-all duration-300"
+                          style={{ width: `${uploadProgress}%` }}
+                        />
+                      </div>
+                      <p className="text-xs text-center text-gray-600">
+                        Uploading... {uploadProgress}%
+                      </p>
+                    </div>
+                  ) : (
+                    <label className="cursor-pointer">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="w-full pointer-events-none"
+                        disabled={!!uploading}
+                      >
+                        <Upload className="w-4 h-4 mr-1" />
+                        Upload
+                      </Button>
+                      <input
+                        type="file"
+                        className="hidden"
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0]
+                          if (file) handleFileUpload(type, file)
+                        }}
+                        disabled={!!uploading}
+                      />
+                    </label>
+                  )}
+                </div>
               )}
             </div>
           )

@@ -237,9 +237,23 @@ export default function DashboardPage() {
     return events.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
   }
 
-  // Get progress steps
+  // Get progress steps - dynamically calculated based on actual data
   const getProgressSteps = () => {
-    const currentStep = application?.current_step || 0
+    if (!application) {
+      return [
+        { id: 1, label: 'Personal Info', completed: false },
+        { id: 2, label: 'Financial Details', completed: false },
+        { id: 3, label: 'Documents', completed: false },
+        { id: 4, label: 'Final Validation', completed: false },
+      ]
+    }
+
+    const currentStep = application.current_step || 0
+    
+    // Check if all required documents are uploaded
+    const requiredDocs = ['identity_front', 'identity_back', 'rib']
+    const uploadedDocTypes = documents.map(doc => doc.document_type)
+    const allDocsUploaded = requiredDocs.every(type => uploadedDocTypes.includes(type as any))
     
     return [
       {
@@ -255,12 +269,12 @@ export default function DashboardPage() {
       {
         id: 3,
         label: 'Documents',
-        completed: currentStep >= 3,
+        completed: allDocsUploaded, // Dynamically check document completion
       },
       {
         id: 4,
         label: 'Final Validation',
-        completed: application?.status !== 'draft',
+        completed: application.status !== 'draft',
       },
     ]
   }

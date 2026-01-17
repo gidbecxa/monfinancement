@@ -33,11 +33,17 @@ export function ProgressTracker({ currentStep, steps }: ProgressTrackerProps) {
 
       {/* Steps */}
       <div className="relative">
-        {/* Connection Line */}
-        <div className="absolute top-5 left-0 right-0 h-0.5 bg-gray-200" style={{ zIndex: 0 }} />
+        {/* Connection Line - Fixed to prevent overflow */}
+        <div className="absolute top-5 h-0.5 bg-gray-200" style={{ left: '20px', right: '20px', zIndex: 0 }} />
         <div
-          className="absolute top-5 left-0 h-0.5 bg-primary-600 transition-all duration-500"
-          style={{ width: `${(completedSteps / (steps.length - 1)) * 100}%`, zIndex: 0 }}
+          className="absolute top-5 h-0.5 bg-primary-600 transition-all duration-500"
+          style={{ 
+            left: '20px',
+            width: steps.length > 1 
+              ? `calc(${Math.min((completedSteps / (steps.length - 1)) * 100, 100)}% - 40px)` 
+              : '0%',
+            zIndex: 0 
+          }}
         />
 
         <div className="relative grid grid-cols-4 gap-4" style={{ zIndex: 1 }}>
