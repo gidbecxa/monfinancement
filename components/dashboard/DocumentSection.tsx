@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Upload, FileText, Check, X, Eye } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import { createClient } from '@/lib/supabase/client'
@@ -46,9 +46,16 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
   const [uploadProgress, setUploadProgress] = useState<number>(0)
   const [selectedDocument, setSelectedDocument] = useState<Document | null>(null)
   const supabase = createClient()
+  
+  // Refs for file inputs
+  const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({})
 
   const getDocumentByType = (type: keyof typeof DOCUMENT_TYPES) => {
     return documents.find(doc => doc.document_type === type)
+  }
+  
+  const triggerFileInput = (type: keyof typeof DOCUMENT_TYPES) => {
+    fileInputRefs.current[type]?.click()
   }
 
   const handleFileUpload = async (
@@ -234,27 +241,28 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                       <Eye className="w-4 h-4 mr-1" />
                       View
                     </Button>
-                    <label className="flex-1 cursor-pointer">
-                      <span className="inline-block w-full">
-                        <Button
-                          size="sm"
-                          variant="secondary"
-                          className="w-full pointer-events-none"
-                        >
-                          <Upload className="w-4 h-4 mr-1" />
-                          Replace
-                        </Button>
-                      </span>
-                      <input
-                        type="file"
-                        className="hidden"
-                        accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={(e) => {
-                          const file = e.target.files?.[0]
-                          if (file) handleFileUpload(type, file)
-                        }}
-                      />
-                    </label>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      className="flex-1"
+                      onClick={() => triggerFileInput(type)}
+                    >
+                      <Upload className="w-4 h-4 mr-1" />
+                      Replace
+                    </Button>
+                    <input
+                      ref={(el) => { fileInputRefs.current[type] = el }}
+                      type="file"
+                      className="hidden"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0]
+                        if (file) {
+                          handleFileUpload(type, file)
+                          e.target.value = ''
+                        }
+                      }}
+                    />
                   </div>
                 </div>
               ) : (
@@ -273,27 +281,32 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                       </p>
                     </div>
                   ) : (
-                    <label className="cursor-pointer">
+                    <>
                       <Button
                         size="sm"
                         variant="outline"
-                        className="w-full pointer-events-none"
+                        className="w-full"
+                        onClick={() => triggerFileInput(type)}
                         disabled={!!uploading}
                       >
                         <Upload className="w-4 h-4 mr-1" />
                         Upload
                       </Button>
                       <input
+                        ref={(el) => { fileInputRefs.current[type] = el }}
                         type="file"
                         className="hidden"
                         accept=".pdf,.jpg,.jpeg,.png"
                         onChange={(e) => {
                           const file = e.target.files?.[0]
-                          if (file) handleFileUpload(type, file)
+                          if (file) {
+                            handleFileUpload(type, file)
+                            e.target.value = ''
+                          }
                         }}
                         disabled={!!uploading}
                       />
-                    </label>
+                    </>
                   )}
                 </div>
               )}
