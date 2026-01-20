@@ -13,6 +13,31 @@
     "confirm": "Confirm",
     "close": "Close"
   },
+  "validation": {
+    "minAmount": "Minimum funding amount is {min}",
+    "maxAmount": "Maximum funding amount is {max}",
+    "firstNameMin": "First name must be at least 2 characters",
+    "firstNameMax": "First name must be less than 100 characters",
+    "firstNameInvalid": "First name contains invalid characters",
+    "lastNameMin": "Last name must be at least 2 characters",
+    "lastNameMax": "Last name must be less than 100 characters",
+    "lastNameInvalid": "Last name contains invalid characters",
+    "ageRequirement": "You must be between 18 and 100 years old",
+    "invalidEmail": "Invalid email address",
+    "addressMin": "Address must be at least 10 characters",
+    "addressMax": "Address must be less than 500 characters",
+    "countryRequired": "Please select a country",
+    "fundingTypeRequired": "Please select a funding type",
+    "fundingReasonMin": "Please provide at least 20 characters explaining your funding reason",
+    "fundingReasonMax": "Funding reason must be less than 1000 characters",
+    "professionMin": "Profession must be at least 2 characters",
+    "professionMax": "Profession must be less than 100 characters",
+    "monthlyIncomeMin": "Monthly income must be a positive number",
+    "monthlyIncomeMax": "Please enter a valid monthly income",
+    "invalidPhoneFormat": "Invalid phone number format. Use international format (e.g., +33612345678)",
+    "otpLength": "Verification code must be 6 digits",
+    "otpNumbers": "Verification code must contain only numbers"
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -288,6 +313,11 @@
     }
   },
   "footer": {
+    "description": "Your trusted partner for non-refundable financing. We connect you with the best funding opportunities.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "about": "About",
+    "legal": "Legal",
     "copyright": "© 2026 Monfinancement. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",

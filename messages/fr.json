@@ -13,6 +13,31 @@
     "confirm": "Confirmer",
     "close": "Fermer"
   },
+  "validation": {
+    "minAmount": "Le montant minimum de financement est de {min}",
+    "maxAmount": "Le montant maximum de financement est de {max}",
+    "firstNameMin": "Le prénom doit contenir au moins 2 caractères",
+    "firstNameMax": "Le prénom doit contenir moins de 100 caractères",
+    "firstNameInvalid": "Le prénom contient des caractères invalides",
+    "lastNameMin": "Le nom doit contenir au moins 2 caractères",
+    "lastNameMax": "Le nom doit contenir moins de 100 caractères",
+    "lastNameInvalid": "Le nom contient des caractères invalides",
+    "ageRequirement": "Vous devez avoir entre 18 et 100 ans",
+    "invalidEmail": "Adresse e-mail invalide",
+    "addressMin": "L'adresse doit contenir au moins 10 caractères",
+    "addressMax": "L'adresse doit contenir moins de 500 caractères",
+    "countryRequired": "Veuillez sélectionner un pays",
+    "fundingTypeRequired": "Veuillez sélectionner un type de financement",
+    "fundingReasonMin": "Veuillez fournir au moins 20 caractères expliquant la raison du financement",
+    "fundingReasonMax": "La raison du financement doit contenir moins de 1000 caractères",
+    "professionMin": "La profession doit contenir au moins 2 caractères",
+    "professionMax": "La profession doit contenir moins de 100 caractères",
+    "monthlyIncomeMin": "Le revenu mensuel doit être un nombre positif",
+    "monthlyIncomeMax": "Veuillez entrer un revenu mensuel valide",
+    "invalidPhoneFormat": "Format de numéro de téléphone invalide. Utilisez le format international (ex: +33612345678)",
+    "otpLength": "Le code de vérification doit contenir 6 chiffres",
+    "otpNumbers": "Le code de vérification ne doit contenir que des chiffres"
+  },
   "nav": {
     "home": "Accueil",
     "about": "À propos",
@@ -288,6 +313,11 @@
     }
   },
   "footer": {
+    "description": "Votre partenaire de confiance pour un financement non remboursable. Nous vous connectons aux meilleures opportunités de financement.",
+    "quickLinks": "Liens rapides",
+    "home": "Accueil",
+    "about": "À propos",
+    "legal": "Mentions légales",
     "copyright": "© 2026 Monfinancement. Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",

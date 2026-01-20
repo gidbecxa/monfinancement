@@ -22,20 +22,20 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-gray-600 max-w-md">
-              Your trusted partner for non-refundable financing. We connect you with the best funding opportunities.
+              {t('description')}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Quick Links</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">{t('quickLinks')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
                   href="/"
                   className="text-sm text-gray-600 hover:text-primary-800 transition-colors"
                 >
-                  Home
+                  {t('home')}
                 </Link>
               </li>
               <li>
@@ -43,7 +43,7 @@ export default function Footer() {
                   href="/about"
                   className="text-sm text-gray-600 hover:text-primary-800 transition-colors"
                 >
-                  About
+                  {t('about')}
                 </Link>
               </li>
               <li>
@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-semibold text-gray-900 mb-4">Legal</h3>
+            <h3 className="font-semibold text-gray-900 mb-4">{t('legal')}</h3>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -84,7 +84,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-8 pt-8 border-t border-gray-200">
           <p className="text-center text-sm text-gray-600">
-            © {currentYear} Monfinancement. {t('copyright').split('. ')[1] || 'All rights reserved.'}
+            {t('copyright')}
           </p>
         </div>
       </div>
