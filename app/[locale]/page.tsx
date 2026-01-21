@@ -130,12 +130,12 @@ export default function Home() {
     },
   ]
 
-  // Partner logos (placeholder)
+  // Partner logos
   const partners = [
-    { name: 'Société Générale', logo: '/images/partners/sg.png' },
-    { name: 'BNP Paribas', logo: '/images/partners/bnp.png' },
-    { name: 'HSBC', logo: '/images/partners/hsbc.png' },
-    { name: 'Revolut', logo: '/images/partners/revolut.png' },
+    { name: 'Société Générale', logo: '/images/partners/sg.svg' },
+    { name: 'BNP Paribas', logo: '/images/partners/bnp.svg' },
+    { name: 'HSBC', logo: '/images/partners/hsbc.svg' },
+    { name: 'Revolut', logo: '/images/partners/revolut.svg' },
     { name: 'IMF', logo: '/images/partners/imf.png' },
   ]
 
@@ -223,13 +223,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Family Photos Carousel Section - Placeholder */}
+      {/* Family Photos Carousel Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-gray-200 to-gray-300 rounded-2xl p-16 text-center">
-            <Heart className="w-20 h-20 mx-auto mb-6 text-primary-700" />
-            <p className="text-2xl font-semibold text-gray-700">Photos de familles heureuses</p>
-            <p className="text-gray-600 mt-2">(Carrousel à implémenter)</p>
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <Heart className="w-10 h-10 text-primary-700" />
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+                {t('familiesTitle')}
+              </h2>
+            </div>
+            
+            {/* Carousel */}
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              <div className="flex animate-carousel">
+                {/* Duplicate images for seamless loop */}
+                {[1, 2, 3, 4, 5, 1, 2, 3, 4, 5].map((num, index) => (
+                  <div key={index} className="min-w-full">
+                    <img
+                      src={`/images/families/family-${num}.jpg`}
+                      alt={`Happy family ${num}`}
+                      className="w-full h-96 md:h-[500px] object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              
+              {/* Carousel indicators */}
+              <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
+                {[1, 2, 3, 4, 5].map((num) => (
+                  <div key={num} className="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors"></div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -289,12 +315,16 @@ export default function Home() {
             {t('partnersTitle')}
           </h2>
           
-          {/* Placeholder for partner logos */}
+          {/* Partner logos */}
           <div className="bg-white rounded-2xl p-12 shadow-lg">
             <div className="flex flex-wrap justify-center items-center gap-12">
               {partners.map((partner, index) => (
-                <div key={index} className="w-32 h-20 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <p className="text-sm text-gray-600 font-medium text-center px-2">{partner.name}</p>
+                <div key={index} className="grayscale hover:grayscale-0 transition-all duration-300 opacity-70 hover:opacity-100">
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="h-16 w-auto object-contain"
+                  />
                 </div>
               ))}
             </div>
@@ -320,9 +350,13 @@ export default function Home() {
               {teamMembers.map((member, index) => (
                 <Card key={index} variant="elevated" className="text-center hover:shadow-2xl transition-all">
                   <CardContent className="pt-8 pb-6">
-                    {/* Placeholder image */}
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-200 to-primary-300 flex items-center justify-center shadow-lg">
-                      <Users className="w-16 h-16 text-primary-800" />
+                    {/* Team member image */}
+                    <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden shadow-lg">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
                     <p className="text-primary-700 font-semibold">{member.role}</p>
