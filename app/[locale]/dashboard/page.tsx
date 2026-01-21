@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from '@/i18n/routing'
 import { createClient } from '@/lib/supabase/client'
 import { validateSession, logoutUser } from '@/lib/auth/client'
+import { useTranslations } from 'next-intl'
 import Button from '@/components/ui/Button'
 import { Plus, LogOut, Calendar } from 'lucide-react'
 import { ApplicationOverviewCard } from '@/components/dashboard/ApplicationOverviewCard'
@@ -46,6 +47,7 @@ interface TimelineEvent {
 }
 
 export default function DashboardPage() {
+  const t = useTranslations('dashboard')
   const router = useRouter()
   const supabase = createClient()
 
@@ -241,10 +243,10 @@ export default function DashboardPage() {
   const getProgressSteps = () => {
     if (!application) {
       return [
-        { id: 1, label: 'Personal Info', completed: false },
-        { id: 2, label: 'Financial Details', completed: false },
-        { id: 3, label: 'Documents', completed: false },
-        { id: 4, label: 'Final Validation', completed: false },
+        { id: 1, label: t('progress.personalInfo'), completed: false },
+        { id: 2, label: t('progress.financialDetails'), completed: false },
+        { id: 3, label: t('progress.documents'), completed: false },
+        { id: 4, label: t('progress.finalValidation'), completed: false },
       ]
     }
 
@@ -258,22 +260,22 @@ export default function DashboardPage() {
     return [
       {
         id: 1,
-        label: 'Personal Info',
+        label: t('progress.personalInfo'),
         completed: currentStep >= 1,
       },
       {
         id: 2,
-        label: 'Financial Details',
+        label: t('progress.financialDetails'),
         completed: currentStep >= 2,
       },
       {
         id: 3,
-        label: 'Documents',
+        label: t('progress.documents'),
         completed: allDocsUploaded, // Dynamically check document completion
       },
       {
         id: 4,
-        label: 'Final Validation',
+        label: t('progress.finalValidation'),
         completed: application.status !== 'draft',
       },
     ]
@@ -284,7 +286,7 @@ export default function DashboardPage() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-gray-600">{t('loading')}</p>
         </div>
       </div>
     )
@@ -299,13 +301,13 @@ export default function DashboardPage() {
           <div className="flex justify-between items-center mb-8">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">
-                Welcome{user?.first_name ? `, ${user.first_name}` : ''}!
+                {t('welcome')}{user?.first_name ? `, ${user.first_name}` : ''}!
               </h1>
-              <p className="text-gray-600 mt-1">Start your funding application journey</p>
+              <p className="text-gray-600 mt-1">{t('welcomeSubtitle')}</p>
             </div>
             <Button variant="outline" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
-              Logout
+              {t('logout')}
             </Button>
           </div>
 
@@ -315,27 +317,27 @@ export default function DashboardPage() {
               <div className="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Plus className="w-10 h-10 text-primary-600" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">No Application Yet</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">{t('noApplications')}</h2>
               <p className="text-gray-600 mb-8">
-                Get started with your funding request. Our streamlined process takes just a few minutes to complete.
+                {t('noApplicationsDesc')}
               </p>
               <Button size="lg" onClick={handleNewApplication}>
                 <Plus className="w-5 h-5 mr-2" />
-                Start Your Application
+                {t('startApplication')}
               </Button>
 
               <div className="mt-8 grid grid-cols-3 gap-4 text-left">
                 <div>
                   <div className="font-semibold text-primary-600 text-2xl mb-1">4</div>
-                  <div className="text-xs text-gray-600">Simple Steps</div>
+                  <div className="text-xs text-gray-600">{t('simpleSteps')}</div>
                 </div>
                 <div>
                   <div className="font-semibold text-primary-600 text-2xl mb-1">~10</div>
-                  <div className="text-xs text-gray-600">Minutes</div>
+                  <div className="text-xs text-gray-600">{t('minutes')}</div>
                 </div>
                 <div>
                   <div className="font-semibold text-primary-600 text-2xl mb-1">24h</div>
-                  <div className="text-xs text-gray-600">Response Time</div>
+                  <div className="text-xs text-gray-600">{t('responseTime')}</div>
                 </div>
               </div>
             </div>
@@ -352,22 +354,22 @@ export default function DashboardPage() {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold text-gray-900">
-              Welcome back{user?.first_name ? `, ${user.first_name}` : ''}!
+              {t('welcomeBack')}{user?.first_name ? `, ${user.first_name}` : ''}!
             </h1>
             <p className="text-gray-600 mt-1 flex items-center gap-2">
               <Calendar className="w-4 h-4" />
-              {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+              {new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           </div>
           <div className="flex gap-3">
             {application && application.status === 'draft' && (
               <Button variant="secondary" onClick={() => router.push('/application/new')}>
-                Continue Application
+                {t('continueApplication')}
               </Button>
             )}
             <Button variant="outline" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
-              Logout
+              {t('logout')}
             </Button>
           </div>
         </div>
@@ -375,7 +377,7 @@ export default function DashboardPage() {
         {loading ? (
           <div className="text-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading your dashboard...</p>
+            <p className="text-gray-600">{t('loadingDashboard')}</p>
           </div>
         ) : application ? (
           <div className="space-y-8">

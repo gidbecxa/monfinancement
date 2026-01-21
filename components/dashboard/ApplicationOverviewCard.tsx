@@ -3,6 +3,7 @@
 import { Copy, Check } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
+import { useTranslations } from 'next-intl'
 
 interface ApplicationOverviewCardProps {
   applicationNumber: string
@@ -42,43 +43,46 @@ export function ApplicationOverviewCard({
   submittedAt,
   createdAt,
 }: ApplicationOverviewCardProps) {
+  const t = useTranslations('dashboard')
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
     navigator.clipboard.writeText(applicationNumber)
     setCopied(true)
-    toast.success('Application number copied!')
+    toast.success(t('overview.numberCopied'))
     setTimeout(() => setCopied(false), 2000)
   }
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat(undefined, {
       style: 'currency',
       currency: 'EUR',
     }).format(amount)
   }
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     })
   }
 
-  const statusConfig = STATUS_CONFIG[status]
+  const getStatusLabel = () => {
+    return t(`statuses.${status}`)
+  }
 
   return (
     <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-xl p-6 text-white shadow-lg">
       <div className="flex justify-between items-start mb-6">
         <div>
-          <h2 className="text-lg font-medium text-primary-100 mb-2">Application Number</h2>
+          <h2 className="text-lg font-medium text-primary-100 mb-2">{t('applicationNumber')}</h2>
           <div className="flex items-center gap-3">
             <span className="text-3xl font-bold tracking-wide">{applicationNumber}</span>
             <button
               onClick={handleCopy}
               className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-              title="Copy application number"
+              title={t('overview.copyNumber')}
             >
               {copied ? (
                 <Check className="w-5 h-5" />
@@ -90,26 +94,26 @@ export function ApplicationOverviewCard({
         </div>
 
         <div>
-          <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border ${statusConfig.color}`}>
-            {statusConfig.label}
+          <span className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border ${STATUS_CONFIG[status].color}`}>
+            {getStatusLabel()}
           </span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
-          <p className="text-sm text-primary-100 mb-1">Funding Amount</p>
+          <p className="text-sm text-primary-100 mb-1">{t('overview.fundingAmount')}</p>
           <p className="text-2xl font-bold">{formatCurrency(fundingAmount)}</p>
         </div>
 
         <div>
-          <p className="text-sm text-primary-100 mb-1">Created</p>
+          <p className="text-sm text-primary-100 mb-1">{t('created')}</p>
           <p className="text-lg font-semibold">{formatDate(createdAt)}</p>
         </div>
 
         {submittedAt && (
           <div>
-            <p className="text-sm text-primary-100 mb-1">Submitted</p>
+            <p className="text-sm text-primary-100 mb-1">{t('overview.submitted')}</p>
             <p className="text-lg font-semibold">{formatDate(submittedAt)}</p>
           </div>
         )}
@@ -118,7 +122,7 @@ export function ApplicationOverviewCard({
       {status === 'draft' && (
         <div className="mt-6 p-4 bg-white/10 rounded-lg border border-white/20">
           <p className="text-sm">
-            💡 Your application is in draft mode. Complete all steps and submit to begin the review process.
+            💡 {t('overview.draftMessage')}
           </p>
         </div>
       )}
@@ -126,7 +130,7 @@ export function ApplicationOverviewCard({
       {status === 'under_review' && (
         <div className="mt-6 p-4 bg-white/10 rounded-lg border border-white/20">
           <p className="text-sm">
-            ⏳ Your application is currently under review. We&apos;ll notify you once a decision has been made.
+            ⏳ {t('overview.underReviewMessage')}
           </p>
         </div>
       )}
@@ -134,7 +138,7 @@ export function ApplicationOverviewCard({
       {status === 'approved' && (
         <div className="mt-6 p-4 bg-success-500/20 rounded-lg border border-success-400/30">
           <p className="text-sm font-medium">
-            ✅ Congratulations! Your funding application has been approved.
+            ✅ {t('overview.approvedMessage')}
           </p>
         </div>
       )}
@@ -142,7 +146,7 @@ export function ApplicationOverviewCard({
       {status === 'rejected' && (
         <div className="mt-6 p-4 bg-error-500/20 rounded-lg border border-error-400/30">
           <p className="text-sm">
-            ❌ Your application was not approved. Please contact support for more information.
+            ❌ {t('overview.rejectedMessage')}
           </p>
         </div>
       )}
