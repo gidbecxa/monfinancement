@@ -3,21 +3,36 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* Carousel animation */
-  @keyframes carousel {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  /* Swiper custom styles */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white !important;
+    background: rgba(0, 0, 0, 0.3);
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    transition: all 0.3s ease;
   }
 
-  .animate-carousel {
-    animation: carousel 30s linear infinite;
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.6);
   }
 
-  .animate-carousel:hover {
-    animation-play-state: paused;
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 20px !important;
+  }
+
+  .swiper-pagination-bullet {
+    background: white !important;
+    opacity: 0.5 !important;
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    background: white !important;
   }
 }

@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/routing'
 import Button from '@/components/ui/Button'
 import Card, { CardContent } from '@/components/ui/Card'
+import FamiliesCarousel from '@/components/home/FamiliesCarousel'
 import { 
   CheckCircle, 
   Shield, 
@@ -234,28 +235,7 @@ export default function Home() {
               </h2>
             </div>
             
-            {/* Carousel */}
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <div className="flex animate-carousel">
-                {/* Duplicate images for seamless loop */}
-                {[1, 2, 3, 4, 5, 1, 2, 3, 4, 5].map((num, index) => (
-                  <div key={index} className="min-w-full">
-                    <img
-                      src={`/images/families/family-${num}.jpg`}
-                      alt={`Happy family ${num}`}
-                      className="w-full h-96 md:h-[500px] object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-              
-              {/* Carousel indicators */}
-              <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
-                {[1, 2, 3, 4, 5].map((num) => (
-                  <div key={num} className="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-colors"></div>
-                ))}
-              </div>
-            </div>
+            <FamiliesCarousel />
           </div>
         </div>
       </section>
