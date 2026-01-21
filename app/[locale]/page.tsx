@@ -109,25 +109,61 @@ export default function Home() {
     },
   ]
 
-  // Testimonials (placeholder data)
+  // Testimonials - Real client testimonials
   const testimonials = [
     {
-      name: 'Marie D.',
-      country: 'France',
-      text: 'Grâce à Mon financement, j\'ai pu scolariser mes enfants. Merci infiniment.',
-      image: '/images/testimonials/marie.jpg',
+      name: 'Brigitte R.',
+      location: 'Belgique (Charleroi)',
+      text: 'Ce financement pour mes soins médicaux est arrivée juste à temps. C\'est plus qu\'une aide financière, c\'est un vrai soutien plus que vital.',
+      image: '/images/testimonials/brigitte.jpeg',
     },
     {
-      name: 'Ahmed K.',
-      country: 'Maroc',
-      text: 'Une aide précieuse qui m\'a permis de me soigner. Je recommande vivement.',
-      image: '/images/testimonials/ahmed.jpg',
+      name: 'Caroline B.',
+      location: 'Luxembourg',
+      text: 'J\'ai obtenu un financement, pour finaliser les rénovations de ma nouvelle maison. Je ne saurai comment vous remercier.',
+      image: '/images/testimonials/caroline.jpeg',
     },
     {
-      name: 'Sofia R.',
-      country: 'Espagne',
-      text: 'Un soutien rapide et humain dans un moment difficile. Merci.',
-      image: '/images/testimonials/sofia.jpg',
+      name: 'Marcos V.',
+      location: 'Portugal',
+      text: 'O financiamento literalmente mudou o jogo para o meu negócio. O financiamento obtido me permitiu investir em novas tecnologias e aumentar drasticamente minha produtividade. Estou impressionado com a eficácia deles',
+      image: '/images/testimonials/marcos.jpeg',
+    },
+    {
+      name: 'Edmond K.',
+      location: 'Luxembourg',
+      text: 'Ce financement m\'a été d\'une utilité décisive de ma vie. Grâce à ça, j\'ai relancer mon entreprise qui était au bord de la faillite.',
+      image: '/images/testimonials/edmond.jpeg',
+    },
+    {
+      name: 'Alexander M.',
+      location: 'Deutschland-Allemagne',
+      text: 'Ich habe eine Finanzierung erhalten, um die Renovierung meines neuen Hauses abzuschließen. Ich weiß nicht, wie ich Ihnen danken soll.',
+      image: '/images/testimonials/alexander.jpeg',
+    },
+    {
+      name: 'Marie L.',
+      location: 'France (Linards)',
+      text: 'Après une séparation difficile, j\'ai reçu une aide pour le reloger. Je ne pensais pas qu\'un soutien comme ça existait vraiment. Merci pour l\'aide',
+      image: '/images/testimonials/marie.jpeg',
+    },
+    {
+      name: 'Roland G.',
+      location: 'Belgique (Charleroi)',
+      text: 'J\'étais sans ressources après un accident de travail. Leur aide m\'a permis de tenir le temps de reprendre ma vie en main.',
+      image: '/images/testimonials/roland.jpeg',
+    },
+    {
+      name: 'Maylo Vincent R.',
+      location: 'Martinique (Fort-de-France)',
+      text: 'Mon dossier a été étudié avec sérieux. Même à distance, je me suis senti écouté et considéré. Merci',
+      image: '/images/testimonials/maylo.jpeg',
+    },
+    {
+      name: 'Prince George Maltais',
+      location: 'Réunion',
+      text: 'J\'ai pu finaliser ma formation en Dev Logiciel grâce à eux. La demande était simple, le suivi impeccable.',
+      image: '/images/testimonials/prince.jpeg',
     },
   ]
 
@@ -398,7 +434,7 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center uppercase tracking-wide">
               {t('testimonialsTitle')}
             </h2>
@@ -406,17 +442,21 @@ export default function Home() {
               {t('testimonialsSubtitle')}
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
                 <Card key={index} variant="elevated" className="hover:shadow-2xl transition-all">
                   <CardContent className="pt-8 pb-6">
-                    {/* Placeholder image */}
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary-200 to-primary-300 flex items-center justify-center shadow-md">
-                      <Users className="w-10 h-10 text-primary-800" />
+                    {/* Testimonial image */}
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden shadow-md">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                    <p className="text-gray-700 italic mb-6 leading-relaxed">"{testimonial.text}"</p>
+                    <p className="text-gray-700 italic mb-6 leading-relaxed text-sm">"{testimonial.text}"</p>
                     <p className="font-bold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.country}</p>
+                    <p className="text-sm text-gray-600">{testimonial.location}</p>
                   </CardContent>
                 </Card>
               ))}
