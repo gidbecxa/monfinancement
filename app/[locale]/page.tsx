@@ -432,35 +432,38 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center uppercase tracking-wide">
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 uppercase tracking-wide">
               {t('testimonialsTitle')}
             </h2>
-            <p className="text-lg text-gray-600 mb-12 text-center">
+            <p className="text-lg text-gray-600">
               {t('testimonialsSubtitle')}
             </p>
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <Card key={index} variant="elevated" className="hover:shadow-2xl transition-all">
-                  <CardContent className="pt-8 pb-6">
-                    {/* Testimonial image */}
-                    <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden shadow-md">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <p className="text-gray-700 italic mb-6 leading-relaxed text-sm">"{testimonial.text}"</p>
-                    <p className="font-bold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-600">{testimonial.location}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+        {/* Scrolling Testimonials */}
+        <div className="relative">
+          <div className="flex gap-6 animate-scroll-testimonials">
+            {/* Duplicate testimonials for seamless loop */}
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <Card key={index} variant="elevated" className="flex-shrink-0 w-80 hover:shadow-2xl transition-all">
+                <CardContent className="pt-8 pb-6">
+                  <div className="w-20 h-20 mx-auto mb-6 rounded-full overflow-hidden shadow-md">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <p className="text-gray-700 italic mb-6 leading-relaxed text-sm h-32 overflow-hidden">"{testimonial.text}"</p>
+                  <p className="font-bold text-gray-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-600">{testimonial.location}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

@@ -35,4 +35,22 @@
     opacity: 1 !important;
     background: white !important;
   }
+
+  /* Testimonials scroll animation */
+  @keyframes scroll-testimonials {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll-testimonials {
+    animation: scroll-testimonials 60s linear infinite;
+  }
+
+  .animate-scroll-testimonials:hover {
+    animation-play-state: paused;
+  }
 }
