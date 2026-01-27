@@ -40,6 +40,12 @@ export default function Header() {
               {t('about')}
             </Link>
             <Link
+              href="/nos-offres"
+              className="text-sm font-medium text-gray-700 hover:text-primary-800 transition-colors"
+            >
+              {t('offers')}
+            </Link>
+            <Link
               href="/contact"
               className="text-sm font-medium text-gray-700 hover:text-primary-800 transition-colors"
             >

@@ -7,9 +7,6 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Inter, JetBrains_Mono } from "next/font/google"
 import '@/app/globals.css'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
 
 const inter = Inter({
   variable: "--font-inter",
