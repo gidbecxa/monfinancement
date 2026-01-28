@@ -27,6 +27,7 @@ export async function generateMetadata({
   const { locale } = await params
   
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://monfinancement.co'
+  const ogImageUrl = `${baseUrl}/og-image.svg`
   const videoUrl = `${baseUrl}/videos/7348052.mp4`
   
   return {
@@ -49,6 +50,15 @@ export async function generateMetadata({
       title: 'Monfinancement - Financements Non Remboursables',
       description: 'Programme d\'aide humanitaire offrant des financements non remboursables. En partenariat avec le FMI et la Banque Mondiale.',
       siteName: 'Monfinancement',
+      images: [
+        {
+          url: ogImageUrl,
+          secureUrl: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: 'Monfinancement - Programme d\'aide humanitaire',
+        }
+      ],
       videos: [
         {
           url: videoUrl,
@@ -60,15 +70,10 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: 'player',
+      card: 'summary_large_image',
       title: 'Monfinancement - Financements Non Remboursables',
       description: 'Programme d\'aide humanitaire offrant des financements non remboursables.',
-      players: {
-        playerUrl: videoUrl,
-        streamUrl: videoUrl,
-        width: 1920,
-        height: 1080,
-      },
+      images: [ogImageUrl],
     },
     robots: {
       index: true,
