@@ -159,6 +159,8 @@
     "testimonialsBadge": "Ellos testifican",
     "testimonialsTitle": "Ellos testifican",
     "testimonialsSubtitle": "Los beneficiarios comparten su experiencia",
+    "partnersBadge": "Nuestros Socios de Confianza",
+    "partnersSubtitle": "En colaboración con instituciones internacionales reconocidas",
     "ctaTitle": "¿Listo para comenzar?",
     "ctaSubtitle": "Únase a miles de personas que ya se han beneficiado de nuestro apoyo",
     "ctaButton": "Hacer una solicitud"
@@ -511,6 +513,23 @@
     "contactDesc": "Para cualquier pregunta sobre nuestras ofertas, su situación o un proceso en curso, nuestro equipo permanece a su servicio.",
     "headquarters": "Sede",
     "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, Estados Unidos.",
-    "annexAddress": "Anexo: 8 Boulevard de Berlaimont"
-  }
+    "annexAddress": "Anexo: 8 Boulevard de Berlaimont"  },
+  "contact": {
+    "heroTitle": "Contáctenos",
+    "heroSubtitle": "Para cualquier pregunta relacionada con nuestras ofertas, su situación o un proceso en curso, nuestro equipo permanece a su servicio.",
+    "headquartersTitle": "Sede",
+    "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, Estados Unidos.",
+    "annexLabel": "ANEXO:",
+    "annexAddress": "8 Boulevard de Berlaimont",
+    "whatsappTitle": "Contacto WhatsApp",
+    "phoneTitle": "Número de Teléfono",
+    "emailTitle": "Dirección de Correo",
+    "hoursTitle": "NUESTRO HORARIO",
+    "weekdays": "Lunes - Viernes:",
+    "weekdaysHours": "08:00 - 18:00",
+    "saturday": "Sábado:",
+    "saturdayHours": "08:00 - 14:00",
+    "testimonialsBadge": "Ellos testifican",
+    "testimonialsTitle": "ELLOS TESTIFICAN",
+    "testimonialsSubtitle": "Los beneficiarios comparten su experiencia"  }
 }

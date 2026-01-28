@@ -1,8 +1,8 @@
-# 💼 Monfinancement.co
+# 💼 Monfinancement
 
-> Professional non-refundable financing platform built with Next.js, TypeScript, and Supabase
+> Professional humanitarian funding platform providing non-refundable financial assistance in partnership with IMF and World Bank
 
-[![Next.js](https://img.shields.io/badge/Next.js-14+-black?logo=next.js)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16+-black?logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0+-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-Latest-3ECF8E?logo=supabase)](https://supabase.com/)
@@ -11,18 +11,19 @@
 
 ## 🌟 Overview
 
-Monfinancement.co is a multilingual FinTech web platform that facilitates non-refundable funding requests. Users can submit funding applications through a streamlined multi-step process, track their application status, and connect with advisors for support.
+Monfinancement is a multilingual humanitarian assistance platform that facilitates non-refundable funding requests for individuals and families in need. The platform supports health, education, housing, and project financing through a streamlined application process.
 
 ### Key Features
 
 - ✅ **Multi-step Application Form** - Intuitive 4-step funding request process
-- 🌍 **6 Languages Support** - EN, FR, ES, DE, IT, PT
-- 📱 **Phone Authentication** - Secure phone-based login with OTP
-- 📊 **Real-time Dashboard** - Track application status and history
-- 📄 **Document Management** - Secure upload and storage of identity documents
-- 🔐 **Bank-grade Security** - Row-level security policies and encryption
-- 🎨 **Professional UI** - FinTech-grade design system
-- ⚡ **Lightning Fast** - Server-side rendering with Next.js 14+
+- 🌍 **6 Languages** - French (default), English, German, Spanish, Italian, Portuguese
+- 📱 **Phone Authentication** - Secure phone + PIN authentication system
+- 📊 **Real-time Dashboard** - Track application status and timeline
+- 📄 **Document Management** - Secure document upload and verification
+- 🔐 **Enterprise Security** - Row-level security policies with Supabase
+- 🎨 **Professional UI** - Modern, accessible design system
+- ⚡ **High Performance** - Server-side rendering with Next.js App Router
+- 📹 **Rich Media SEO** - Open Graph video support for social sharing
 
 ---
 
@@ -31,7 +32,7 @@ Monfinancement.co is a multilingual FinTech web platform that facilitates non-re
 ### Prerequisites
 
 - Node.js 18.x or higher
-- npm or yarn
+- npm, yarn, or pnpm
 - Supabase account
 
 ### Installation
@@ -43,6 +44,8 @@ cd monfinancement
 
 # Install dependencies
 npm install
+# or
+pnpm install
 
 # Set up environment variables
 cp .env.example .env.local

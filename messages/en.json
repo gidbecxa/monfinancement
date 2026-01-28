@@ -159,6 +159,8 @@
     "testimonialsBadge": "They Testify",
     "testimonialsTitle": "They Testify",
     "testimonialsSubtitle": "Beneficiaries share their experience",
+    "partnersBadge": "Our Trusted Partners",
+    "partnersSubtitle": "In collaboration with recognized international institutions",
     "ctaTitle": "Ready to get started?",
     "ctaSubtitle": "Join thousands of people who have already benefited from our support",
     "ctaButton": "Make a Request"
@@ -512,5 +514,24 @@
     "headquarters": "Headquarters",
     "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, United States.",
     "annexAddress": "Annex: 8 Boulevard de Berlaimont"
+  },
+  "contact": {
+    "heroTitle": "Contact Us",
+    "heroSubtitle": "For any questions regarding our offers, your situation, or an ongoing process, our team remains at your service.",
+    "headquartersTitle": "Headquarters",
+    "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, United States.",
+    "annexLabel": "ANNEX:",
+    "annexAddress": "8 Boulevard de Berlaimont",
+    "whatsappTitle": "WhatsApp Contact",
+    "phoneTitle": "Phone Number",
+    "emailTitle": "Email Address",
+    "hoursTitle": "OUR HOURS",
+    "weekdays": "Monday - Friday:",
+    "weekdaysHours": "8am - 6pm",
+    "saturday": "Saturday:",
+    "saturdayHours": "8am - 2pm",
+    "testimonialsBadge": "They testify",
+    "testimonialsTitle": "THEY TESTIFY",
+    "testimonialsSubtitle": "Beneficiaries share their experience"
   }
 }

@@ -7,6 +7,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Inter, JetBrains_Mono } from "next/font/google"
 import '@/app/globals.css'
+import type { Metadata } from 'next'
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,6 +18,71 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 })
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://monfinancement.co'
+  const videoUrl = `${baseUrl}/videos/7348052.mp4`
+  
+  return {
+    metadataBase: new URL(baseUrl),
+    title: 'Monfinancement - Financements Non Remboursables',
+    description: 'Programme d\'aide humanitaire offrant des financements non remboursables pour la santé, l\'éducation, le logement et les projets. En partenariat avec le FMI et la Banque Mondiale.',
+    keywords: ['financement', 'aide humanitaire', 'non remboursable', 'FMI', 'Banque Mondiale', 'soutien financier', 'aide sociale'],
+    authors: [{ name: 'Monfinancement' }],
+    creator: 'Monfinancement',
+    publisher: 'Monfinancement',
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    openGraph: {
+      type: 'website',
+      locale: locale,
+      url: baseUrl,
+      title: 'Monfinancement - Financements Non Remboursables',
+      description: 'Programme d\'aide humanitaire offrant des financements non remboursables. En partenariat avec le FMI et la Banque Mondiale.',
+      siteName: 'Monfinancement',
+      videos: [
+        {
+          url: videoUrl,
+          secureUrl: videoUrl,
+          type: 'video/mp4',
+          width: 1920,
+          height: 1080,
+        }
+      ],
+    },
+    twitter: {
+      card: 'player',
+      title: 'Monfinancement - Financements Non Remboursables',
+      description: 'Programme d\'aide humanitaire offrant des financements non remboursables.',
+      players: {
+        playerUrl: videoUrl,
+        streamUrl: videoUrl,
+        width: 1920,
+        height: 1080,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  }
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))

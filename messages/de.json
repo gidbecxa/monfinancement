@@ -159,6 +159,8 @@
     "testimonialsBadge": "Sie bezeugen",
     "testimonialsTitle": "Sie bezeugen",
     "testimonialsSubtitle": "Begünstigte teilen ihre Erfahrungen",
+    "partnersBadge": "Unsere Vertrauenswürdigen Partner",
+    "partnersSubtitle": "In Zusammenarbeit mit anerkannten internationalen Institutionen",
     "ctaTitle": "Bereit anzufangen?",
     "ctaSubtitle": "Schließen Sie sich Tausenden von Menschen an, die bereits von unserer Unterstützung profitiert haben",
     "ctaButton": "Antrag stellen"
@@ -512,5 +514,24 @@
     "headquarters": "Hauptsitz",
     "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, Vereinigte Staaten.",
     "annexAddress": "Anhang: 8 Boulevard de Berlaimont"
+  },
+  "contact": {
+    "heroTitle": "Kontaktieren Sie uns",
+    "heroSubtitle": "Für Fragen zu unseren Angeboten, Ihrer Situation oder einem laufenden Verfahren steht Ihnen unser Team zur Verfügung.",
+    "headquartersTitle": "Hauptsitz",
+    "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, Vereinigte Staaten.",
+    "annexLabel": "ANHANG:",
+    "annexAddress": "8 Boulevard de Berlaimont",
+    "whatsappTitle": "WhatsApp-Kontakt",
+    "phoneTitle": "Telefonnummer",
+    "emailTitle": "E-Mail-Adresse",
+    "hoursTitle": "UNSERE ÖFFNUNGSZEITEN",
+    "weekdays": "Montag - Freitag:",
+    "weekdaysHours": "08:00 - 18:00 Uhr",
+    "saturday": "Samstag:",
+    "saturdayHours": "08:00 - 14:00 Uhr",
+    "testimonialsBadge": "Sie bezeugen",
+    "testimonialsTitle": "SIE BEZEUGEN",
+    "testimonialsSubtitle": "Begünstigte teilen ihre Erfahrungen"
   }
 }

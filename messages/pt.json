@@ -159,6 +159,8 @@
     "testimonialsBadge": "Eles Testemunham",
     "testimonialsTitle": "Eles Testemunham",
     "testimonialsSubtitle": "Os beneficiários compartilham sua experiência",
+    "partnersBadge": "Nossos Parceiros de Confiança",
+    "partnersSubtitle": "Em colaboração com instituições internacionais reconhecidas",
     "ctaTitle": "Pronto para começar?",
     "ctaSubtitle": "Junte-se a milhares de pessoas que já se beneficiaram do nosso apoio",
     "ctaButton": "Fazer uma solicitação"
@@ -512,5 +514,24 @@
     "headquarters": "Sede",
     "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, Estados Unidos.",
     "annexAddress": "Anexo: 8 Boulevard de Berlaimont"
+  },
+  "contact": {
+    "heroTitle": "Contacte-Nos",
+    "heroSubtitle": "Para qualquer questão relacionada às nossas ofertas, à sua situação ou a um processo em curso, a nossa equipa permanece ao seu serviço.",
+    "headquartersTitle": "Sede",
+    "headquartersAddress": "700 19th Street, N.W., Washington, D.C. 20431, Estados Unidos.",
+    "annexLabel": "ANEXO:",
+    "annexAddress": "8 Boulevard de Berlaimont",
+    "whatsappTitle": "Contacto WhatsApp",
+    "phoneTitle": "Número de Telefone",
+    "emailTitle": "Endereço de Email",
+    "hoursTitle": "NOSSO HORÁRIO",
+    "weekdays": "Segunda - Sexta:",
+    "weekdaysHours": "08:00 - 18:00",
+    "saturday": "Sábado:",
+    "saturdayHours": "08:00 - 14:00",
+    "testimonialsBadge": "Eles testemunham",
+    "testimonialsTitle": "ELES TESTEMUNHAM",
+    "testimonialsSubtitle": "Os beneficiários partilham a sua experiência"
   }
 }

@@ -573,6 +573,59 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Partners Section */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                {t('partnersBadge')}
+              </h2>
+              <p className="text-gray-600">
+                {t('partnersSubtitle')}
+              </p>
+            </div>
+
+            {/* Partners Logos */}
+            <div className="flex flex-wrap items-center justify-center gap-12 md:gap-16 lg:gap-20">
+              {/* IMF Logo */}
+              <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                <Image
+                  src="/images/partners/imf.png"
+                  alt="International Monetary Fund (IMF)"
+                  width={180}
+                  height={80}
+                  className="h-16 md:h-20 w-auto object-contain"
+                />
+              </div>
+
+              {/* World Bank Logo */}
+              <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                <Image
+                  src="/images/partners/world_bank_logo.svg"
+                  alt="World Bank"
+                  width={180}
+                  height={80}
+                  className="h-16 md:h-20 w-auto object-contain"
+                />
+              </div>
+
+              {/* European Union Flag */}
+              <div className="grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                <Image
+                  src="/images/partners/flag_of_europe.svg"
+                  alt="European Union"
+                  width={120}
+                  height={80}
+                  className="h-16 md:h-20 w-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-24 bg-gradient-to-r from-primary-800 via-primary-700 to-primary-800 text-white relative overflow-hidden">
         {/* Background decoration */}
