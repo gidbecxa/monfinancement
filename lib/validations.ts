@@ -6,8 +6,8 @@ import { z } from 'zod'
 export const step0Schema = z.object({
   funding_amount: z
     .number()
-    .min(1000, 'Minimum funding amount is 1,000')
-    .max(10000000, 'Maximum funding amount is 10,000,000'),
+    .min(1000, 'validation.minAmount')
+    .max(5000000, 'validation.maxAmount'),
 })
 
 /**
@@ -16,14 +16,14 @@ export const step0Schema = z.object({
 export const step1Schema = z.object({
   firstName: z
     .string()
-    .min(2, 'First name must be at least 2 characters')
-    .max(100, 'First name must be less than 100 characters')
-    .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'First name contains invalid characters'),
+    .min(2, 'validation.firstNameMin')
+    .max(100, 'validation.firstNameMax')
+    .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'validation.firstNameInvalid'),
   lastName: z
     .string()
-    .min(2, 'Last name must be at least 2 characters')
-    .max(100, 'Last name must be less than 100 characters')
-    .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'Last name contains invalid characters'),
+    .min(2, 'validation.lastNameMin')
+    .max(100, 'validation.lastNameMax')
+    .regex(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'validation.lastNameInvalid'),
   dateOfBirth: z
     .string()
     .refine((date) => {
@@ -31,7 +31,7 @@ export const step1Schema = z.object({
       const today = new Date()
       const age = today.getFullYear() - birthDate.getFullYear()
       return age >= 18 && age <= 100
-    }, 'You must be between 18 and 100 years old'),
+    }, 'validation.ageRequirement'),
   gender: z.enum(['male', 'female', 'other', 'prefer_not_to_say']).optional(),
 })
 
@@ -41,30 +41,30 @@ export const step1Schema = z.object({
 export const step2Schema = z.object({
   email: z
     .string()
-    .email('Invalid email address')
+    .email('validation.invalidEmail')
     .toLowerCase(),
   residentialAddress: z
     .string()
-    .min(10, 'Address must be at least 10 characters')
-    .max(500, 'Address must be less than 500 characters'),
+    .min(10, 'validation.addressMin')
+    .max(500, 'validation.addressMax'),
   countryOfResidence: z
     .string()
-    .min(2, 'Please select a country'),
+    .min(2, 'validation.countryRequired'),
   fundingType: z
     .string()
-    .min(2, 'Please select a funding type'),
+    .min(2, 'validation.fundingTypeRequired'),
   fundingReason: z
     .string()
-    .min(20, 'Please provide at least 20 characters explaining your funding reason')
-    .max(1000, 'Funding reason must be less than 1000 characters'),
+    .min(1, 'validation.fundingReasonMin')
+    .max(1000, 'validation.fundingReasonMax'),
   profession: z
     .string()
-    .min(2, 'Profession must be at least 2 characters')
-    .max(100, 'Profession must be less than 100 characters'),
+    .min(2, 'validation.professionMin')
+    .max(100, 'validation.professionMax'),
   monthlyIncome: z
     .number()
-    .min(0, 'Monthly income must be a positive number')
-    .max(1000000000, 'Please enter a valid monthly income'),
+    .min(0, 'validation.monthlyIncomeMin')
+    .max(1000000000, 'validation.monthlyIncomeMax'),
 })
 
 /**
@@ -80,7 +80,7 @@ export const completeApplicationSchema = step0Schema
 export const phoneAuthSchema = z.object({
   phone_number: z
     .string()
-    .regex(/^\+[1-9]\d{1,14}$/, 'Invalid phone number format. Use international format (e.g., +33612345678)'),
+    .regex(/^\+[1-9]\d{1,14}$/, 'validation.invalidPhoneFormat'),
 })
 
 /**
@@ -89,8 +89,8 @@ export const phoneAuthSchema = z.object({
 export const otpVerificationSchema = z.object({
   otp: z
     .string()
-    .length(6, 'Verification code must be 6 digits')
-    .regex(/^\d{6}$/, 'Verification code must contain only numbers'),
+    .length(6, 'validation.otpLength')
+    .regex(/^\d{6}$/, 'validation.otpNumbers'),
 })
 
 /**
@@ -99,7 +99,7 @@ export const otpVerificationSchema = z.object({
 export const adminLoginSchema = z.object({
   email: z
     .string()
-    .email('Invalid email address'),
+    .email('validation.invalidEmail'),
   password: z
     .string()
     .min(8, 'Password must be at least 8 characters'),

@@ -14,7 +14,7 @@ interface Step0Props {
 }
 
 const MIN_AMOUNT = 1000
-const MAX_AMOUNT = 10000000
+const MAX_AMOUNT = 5000000
 
 export default function Step0FundingAmount({
   fundingAmount,

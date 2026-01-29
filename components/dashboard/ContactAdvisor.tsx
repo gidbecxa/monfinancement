@@ -13,8 +13,8 @@ interface ContactAdvisorProps {
 }
 
 export function ContactAdvisor({
-  whatsappNumber = '+33612345678',
-  whatsappTemplate = 'Hello, I need assistance with my funding application',
+  whatsappNumber = '+33629125401',
+  whatsappTemplate = 'Bonjour, j\'ai fait la demande. J\'ai besoin d\'assistance pour un bon suivi de mon dossier',
   contactEmail = 'contact@monfinancement.co',
   emailSubject = 'Assistance Request',
   emailBody = 'Hello,\n\nI need assistance with my funding application.\n\nApplication Number: {{applicationNumber}}\n\nThank you.',

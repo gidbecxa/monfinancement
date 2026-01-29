@@ -13,6 +13,15 @@
     "confirm": "Bestätigen",
     "close": "Schließen"
   },
+  "fundingTypes": {
+    "personal-loan": "Privatdarlehen",
+    "business-loan": "Geschäftsdarlehen",
+    "education-loan": "Bildungsdarlehen",
+    "medical-assistance": "Medizinische Hilfe",
+    "project-funding": "Projektfinanzierung",
+    "emergency-aid": "Nothilfe",
+    "other": "Sonstiges"
+  },
   "validation": {
     "minAmount": "Der Mindestfinanzierungsbetrag beträgt {min}",
     "maxAmount": "Der Höchstfinanzierungsbetrag beträgt {max}",
@@ -28,7 +37,7 @@
     "addressMax": "Die Adresse muss weniger als 500 Zeichen lang sein",
     "countryRequired": "Bitte wählen Sie ein Land aus",
     "fundingTypeRequired": "Bitte wählen Sie einen Finanzierungstyp aus",
-    "fundingReasonMin": "Bitte geben Sie mindestens 20 Zeichen ein, um den Grund für die Finanzierung zu erläutern",
+    "fundingReasonMin": "Bitte geben Sie den Grund für die Finanzierung an",
     "fundingReasonMax": "Der Finanzierungsgrund muss weniger als 1000 Zeichen lang sein",
     "professionMin": "Der Beruf muss mindestens 2 Zeichen lang sein",
     "professionMax": "Der Beruf muss weniger als 100 Zeichen lang sein",

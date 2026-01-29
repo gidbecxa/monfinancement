@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { step1Schema, type Step1FormData } from '@/lib/validations'
+import { useValidationTranslation } from '@/hooks/useValidationTranslation'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
 import Card, { CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card'
@@ -18,6 +19,7 @@ interface Step1Props {
 
 export default function Step1PersonalInfo({ data, onNext, onBack, isLoading = false }: Step1Props) {
   const t = useTranslations('application')
+  const { translateError } = useValidationTranslation()
 
   const {
     register,
@@ -54,7 +56,7 @@ export default function Step1PersonalInfo({ data, onNext, onBack, isLoading = fa
               <Input
                 label={t('step1.fields.firstName.label')}
                 placeholder={t('step1.fields.firstName.placeholder')}
-                error={errors.firstName?.message}
+                error={translateError(errors.firstName)}
                 disabled={isLoading}
                 {...register('firstName')}
               />
@@ -62,7 +64,7 @@ export default function Step1PersonalInfo({ data, onNext, onBack, isLoading = fa
               <Input
                 label={t('step1.fields.lastName.label')}
                 placeholder={t('step1.fields.lastName.placeholder')}
-                error={errors.lastName?.message}
+                error={translateError(errors.lastName)}
                 disabled={isLoading}
                 {...register('lastName')}
               />
@@ -71,7 +73,7 @@ export default function Step1PersonalInfo({ data, onNext, onBack, isLoading = fa
             <Input
               label={t('step1.fields.dateOfBirth.label')}
               type="date"
-              error={errors.dateOfBirth?.message}
+              error={translateError(errors.dateOfBirth)}
               helperText={t('step1.fields.dateOfBirth.helper')}
               disabled={isLoading}
               {...register('dateOfBirth')}
@@ -93,7 +95,7 @@ export default function Step1PersonalInfo({ data, onNext, onBack, isLoading = fa
                 <option value="prefer_not_to_say">{t('step1.fields.gender.options.preferNotToSay')}</option>
               </select>
               {errors.gender && (
-                <p className="mt-2 text-sm text-error-600">{errors.gender.message}</p>
+                <p className="mt-2 text-sm text-error-600">{translateError(errors.gender)}</p>
               )}
               <p className="mt-2 text-xs text-gray-500">{t('step1.fields.gender.optional')}</p>
             </div>

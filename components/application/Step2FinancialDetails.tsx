@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { step2Schema, type Step2FormData } from '@/lib/validations'
+import { useValidationTranslation } from '@/hooks/useValidationTranslation'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
 import Card, { CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/Card'
@@ -27,6 +28,8 @@ export default function Step2FinancialDetails({
   isLoading = false,
 }: Step2Props) {
   const t = useTranslations('application')
+  const tFundingTypes = useTranslations('fundingTypes')
+  const { translateError } = useValidationTranslation()
   const [monthlyIncome, setMonthlyIncome] = useState<number | null>(data.monthlyIncome || null)
 
   const {
@@ -84,7 +87,7 @@ export default function Step2FinancialDetails({
                   label={t('step2.fields.email.label')}
                   type="email"
                   placeholder={t('step2.fields.email.placeholder')}
-                  error={errors.email?.message}
+                  error={translateError(errors.email)}
                   disabled={isLoading}
                   {...register('email')}
                 />
@@ -101,14 +104,14 @@ export default function Step2FinancialDetails({
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-4 focus:ring-primary-100 focus:border-primary-600 transition-all duration-200 resize-none"
                   />
                   {errors.residentialAddress && (
-                    <p className="mt-2 text-sm text-error-600">{errors.residentialAddress.message}</p>
+                    <p className="mt-2 text-sm text-error-600">{translateError(errors.residentialAddress)}</p>
                   )}
                 </div>
 
                 <Input
                   label={t('step2.fields.country.label')}
                   placeholder={t('step2.fields.country.placeholder')}
-                  error={errors.countryOfResidence?.message}
+                  error={translateError(errors.countryOfResidence)}
                   disabled={isLoading}
                   {...register('countryOfResidence')}
                 />
@@ -140,12 +143,14 @@ export default function Step2FinancialDetails({
                           disabled={isLoading}
                           className="w-4 h-4 text-primary-600 focus:ring-primary-500"
                         />
-                        <span className="text-sm font-medium text-gray-900">{type}</span>
+                        <span className="text-sm font-medium text-gray-900">
+                          {tFundingTypes(type as any) || type}
+                        </span>
                       </label>
                     ))}
                   </div>
                   {errors.fundingType && (
-                    <p className="mt-2 text-sm text-error-600">{errors.fundingType.message}</p>
+                    <p className="mt-2 text-sm text-error-600">{translateError(errors.fundingType)}</p>
                   )}
                 </div>
 
@@ -163,7 +168,7 @@ export default function Step2FinancialDetails({
                   />
                   <div className="flex justify-between items-center mt-2">
                     {errors.fundingReason && (
-                      <p className="text-sm text-error-600">{errors.fundingReason.message}</p>
+                      <p className="text-sm text-error-600">{translateError(errors.fundingReason)}</p>
                     )}
                     <p className="text-xs text-gray-500 ml-auto">
                       {fundingReason.length} / {maxReasonLength}
@@ -184,7 +189,7 @@ export default function Step2FinancialDetails({
                 <Input
                   label={t('step2.fields.profession.label')}
                   placeholder={t('step2.fields.profession.placeholder')}
-                  error={errors.profession?.message}
+                  error={translateError(errors.profession)}
                   disabled={isLoading}
                   {...register('profession')}
                 />
@@ -195,7 +200,7 @@ export default function Step2FinancialDetails({
                   onValueChange={handleMonthlyIncomeChange}
                   currency="EUR"
                   placeholder={t('step2.fields.monthlyIncome.placeholder')}
-                  error={errors.monthlyIncome?.message}
+                  error={translateError(errors.monthlyIncome)}
                   helperText={!errors.monthlyIncome ? t('step2.fields.monthlyIncome.helper') : undefined}
                   disabled={isLoading}
                 />

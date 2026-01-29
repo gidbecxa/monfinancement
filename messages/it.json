@@ -13,6 +13,15 @@
     "confirm": "Conferma",
     "close": "Chiudi"
   },
+  "fundingTypes": {
+    "personal-loan": "Prestito personale",
+    "business-loan": "Prestito aziendale",
+    "education-loan": "Prestito per l'istruzione",
+    "medical-assistance": "Assistenza medica",
+    "project-funding": "Finanziamento del progetto",
+    "emergency-aid": "Aiuto di emergenza",
+    "other": "Altro"
+  },
   "validation": {
     "minAmount": "L'importo minimo di finanziamento è {min}",
     "maxAmount": "L'importo massimo di finanziamento è {max}",

@@ -145,7 +145,7 @@ export default function LoginPage() {
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="+229 XX XX XX XX"
+              placeholder="+1 XXX XXX XXXX"
               leftIcon={<Phone className="w-5 h-5" />}
               required
               disabled={loading}

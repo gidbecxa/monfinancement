@@ -13,6 +13,15 @@
     "confirm": "Confirm",
     "close": "Close"
   },
+  "fundingTypes": {
+    "personal-loan": "Personal Loan",
+    "business-loan": "Business Loan",
+    "education-loan": "Education Loan",
+    "medical-assistance": "Medical Assistance",
+    "project-funding": "Project Funding",
+    "emergency-aid": "Emergency Aid",
+    "other": "Other"
+  },
   "validation": {
     "minAmount": "Minimum funding amount is {min}",
     "maxAmount": "Maximum funding amount is {max}",

@@ -13,6 +13,15 @@
     "confirm": "Confirmar",
     "close": "Fechar"
   },
+  "fundingTypes": {
+    "personal-loan": "Empréstimo pessoal",
+    "business-loan": "Empréstimo comercial",
+    "education-loan": "Empréstimo educacional",
+    "medical-assistance": "Assistência médica",
+    "project-funding": "Financiamento de projeto",
+    "emergency-aid": "Ajuda de emergência",
+    "other": "Outro"
+  },
   "validation": {
     "minAmount": "O valor mínimo de financiamento é {min}",
     "maxAmount": "O valor máximo de financiamento é {max}",

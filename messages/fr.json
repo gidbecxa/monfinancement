@@ -13,6 +13,15 @@
     "confirm": "Confirmer",
     "close": "Fermer"
   },
+  "fundingTypes": {
+    "personal-loan": "Prêt personnel",
+    "business-loan": "Prêt professionnel",
+    "education-loan": "Prêt éducation",
+    "medical-assistance": "Assistance médicale",
+    "project-funding": "Financement de projet",
+    "emergency-aid": "Aide d'urgence",
+    "other": "Autre"
+  },
   "validation": {
     "minAmount": "Le montant minimum de financement est de {min}",
     "maxAmount": "Le montant maximum de financement est de {max}",
@@ -28,7 +37,7 @@
     "addressMax": "L'adresse doit contenir moins de 500 caractères",
     "countryRequired": "Veuillez sélectionner un pays",
     "fundingTypeRequired": "Veuillez sélectionner un type de financement",
-    "fundingReasonMin": "Veuillez fournir au moins 20 caractères expliquant la raison du financement",
+    "fundingReasonMin": "Veuillez fournir la raison du financement",
     "fundingReasonMax": "La raison du financement doit contenir moins de 1000 caractères",
     "professionMin": "La profession doit contenir au moins 2 caractères",
     "professionMax": "La profession doit contenir moins de 100 caractères",
