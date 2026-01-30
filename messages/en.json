@@ -457,6 +457,56 @@
       "saving": "Saving...",
       "saved": "Profile updated successfully",
       "error": "Failed to update profile"
+    },
+    "progressTracker": {
+      "applicationProgress": "Application Progress"
+    },
+    "documents": {
+      "title": "Your Documents",
+      "description": "Upload the required documents to complete your application",
+      "identityFront": {
+        "label": "Identity Card (Front)",
+        "description": "Front side of your ID card"
+      },
+      "identityBack": {
+        "label": "Identity Card (Back)",
+        "description": "Back side of your ID card"
+      },
+      "rib": {
+        "label": "RIB (Bank Details)",
+        "description": "Bank account information document"
+      },
+      "upload": "Upload",
+      "replace": "Replace",
+      "view": "View",
+      "uploading": "Uploading...",
+      "uploaded": "Uploaded",
+      "fileSizeError": "File size must be less than 5MB",
+      "fileSizeErrorDesc": "Please choose a smaller file",
+      "fileTypeError": "Invalid file type",
+      "fileTypeErrorDesc": "Only PDF, JPEG, and PNG files are allowed",
+      "uploadingDocument": "Uploading {documentType}...",
+      "uploadingDesc": "Please wait while we process your document",
+      "uploadError": "Upload failed",
+      "uploadErrorDesc": "Failed to upload document. Please try again.",
+      "uploadSuccess": "Document uploaded successfully!",
+      "uploadSuccessDesc": "{documentType} has been validated and saved",
+      "previewTitle": "Document Preview",
+      "close": "Close"
+    },
+    "activityTimeline": {
+      "title": "Activity Timeline",
+      "noActivity": "No activity yet",
+      "minutesAgo": "{count} minutes ago",
+      "hoursAgo": "{count} hours ago",
+      "daysAgo": "{count} days ago"
+    },
+    "contactAdvisor": {
+      "title": "Need Assistance?",
+      "description": "Our advisors are here to help you with your funding application. Contact us via WhatsApp or email for quick support.",
+      "whatsappButton": "WhatsApp Support",
+      "emailButton": "Email Support",
+      "applicationNumberNote": "Your application number {number} will be included in your message."
     }
   },
   "footer": {
