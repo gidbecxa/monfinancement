@@ -43,7 +43,7 @@
     "professionMax": "La professione deve contenere meno di 100 caratteri",
     "monthlyIncomeMin": "Il reddito mensile deve essere un numero positivo",
     "monthlyIncomeMax": "Inserisci un reddito mensile valido",
-    "invalidPhoneFormat": "Formato numero di telefono non valido. Usa il formato internazionale (es: +33612345678)",
+    "invalidPhoneFormat": "Formato numero di telefono non valido. Usa il formato internazionale (es: +33629125401)",
     "otpLength": "Il codice di verifica deve contenere 6 cifre",
     "otpNumbers": "Il codice di verifica deve contenere solo numeri"
   },
@@ -453,6 +453,56 @@
       "saving": "Salvataggio...",
       "saved": "Profilo aggiornato con successo",
       "error": "Impossibile aggiornare il profilo"
+    },
+    "progressTracker": {
+      "applicationProgress": "Progresso della domanda"
+    },
+    "documents": {
+      "title": "I Tuoi Documenti",
+      "description": "Carica i documenti richiesti per completare la tua domanda",
+      "identityFront": {
+        "label": "Carta d'identità (Fronte)",
+        "description": "Lato anteriore del documento"
+      },
+      "identityBack": {
+        "label": "Carta d'identità (Retro)",
+        "description": "Lato posteriore del documento"
+      },
+      "rib": {
+        "label": "Coordinate bancarie",
+        "description": "Documento informazioni conto bancario"
+      },
+      "upload": "Carica",
+      "replace": "Sostituisci",
+      "view": "Visualizza",
+      "uploading": "Caricamento...",
+      "uploaded": "Caricato",
+      "fileSizeError": "La dimensione del file deve essere inferiore a 5 MB",
+      "fileSizeErrorDesc": "Scegli un file più piccolo",
+      "fileTypeError": "Tipo di file non valido",
+      "fileTypeErrorDesc": "Sono consentiti solo file PDF, JPEG e PNG",
+      "uploadingDocument": "Caricamento di {documentType}...",
+      "uploadingDesc": "Attendi mentre elaboriamo il tuo documento",
+      "uploadError": "Caricamento fallito",
+      "uploadErrorDesc": "Impossibile caricare il documento. Riprova.",
+      "uploadSuccess": "Documento caricato con successo!",
+      "uploadSuccessDesc": "{documentType} è stato validato e salvato",
+      "previewTitle": "Anteprima documento",
+      "close": "Chiudi"
+    },
+    "activityTimeline": {
+      "title": "Cronologia attività",
+      "noActivity": "Nessuna attività ancora",
+      "minutesAgo": "{count} minuti fa",
+      "hoursAgo": "{count} ore fa",
+      "daysAgo": "{count} giorni fa"
+    },
+    "contactAdvisor": {
+      "title": "Hai bisogno di assistenza?",
+      "description": "I nostri consulenti sono qui per aiutarti con la tua domanda di finanziamento. Contattaci tramite WhatsApp o email per un supporto rapido.",
+      "whatsappButton": "Supporto WhatsApp",
+      "emailButton": "Supporto via email",
+      "applicationNumberNote": "Il tuo numero di domanda {number} sarà incluso nel messaggio."
     }
   },
   "footer": {

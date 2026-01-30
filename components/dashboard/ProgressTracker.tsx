@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Check } from 'lucide-react'
 
 interface ProgressTrackerProps {
@@ -12,6 +13,7 @@ interface ProgressTrackerProps {
 }
 
 export function ProgressTracker({ currentStep, steps }: ProgressTrackerProps) {
+  const t = useTranslations('dashboard.progressTracker')
   const completedSteps = steps.filter(s => s.completed).length
   const progressPercentage = (completedSteps / steps.length) * 100
 
@@ -20,7 +22,7 @@ export function ProgressTracker({ currentStep, steps }: ProgressTrackerProps) {
       {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-gray-700">Application Progress</span>
+          <span className="text-sm font-medium text-gray-700">{t('applicationProgress')}</span>
           <span className="text-sm font-medium text-primary-600">{Math.round(progressPercentage)}%</span>
         </div>
         <div className="w-full bg-gray-200 rounded-full h-2">

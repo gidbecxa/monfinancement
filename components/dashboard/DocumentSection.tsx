@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { Upload, FileText, Check, X, Eye } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import { createClient } from '@/lib/supabase/client'
@@ -23,25 +24,8 @@ interface DocumentSectionProps {
   onDocumentUploaded: () => void
 }
 
-const DOCUMENT_TYPES = {
-  identity_front: {
-    label: 'Identity Card (Front)',
-    description: 'Front side of your ID card',
-    icon: FileText,
-  },
-  identity_back: {
-    label: 'Identity Card (Back)',
-    description: 'Back side of your ID card',
-    icon: FileText,
-  },
-  rib: {
-    label: 'RIB (Bank Details)',
-    description: 'Bank account information document',
-    icon: FileText,
-  },
-}
-
 export function DocumentSection({ applicationId, documents, onDocumentUploaded }: DocumentSectionProps) {
+  const t = useTranslations('dashboard.documents')
   const [uploading, setUploading] = useState<string | null>(null)
   const [uploadProgress, setUploadProgress] = useState<number>(0)
   const [selectedDocument, setSelectedDocument] = useState<Document | null>(null)
@@ -49,6 +33,24 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
   
   // Refs for file inputs
   const fileInputRefs = useRef<{ [key: string]: HTMLInputElement | null }>({})
+
+  const DOCUMENT_TYPES = {
+    identity_front: {
+      label: t('identityFront.label'),
+      description: t('identityFront.description'),
+      icon: FileText,
+    },
+    identity_back: {
+      label: t('identityBack.label'),
+      description: t('identityBack.description'),
+      icon: FileText,
+    },
+    rib: {
+      label: t('rib.label'),
+      description: t('rib.description'),
+      icon: FileText,
+    },
+  }
 
   const getDocumentByType = (type: keyof typeof DOCUMENT_TYPES) => {
     return documents.find(doc => doc.document_type === type)
@@ -64,8 +66,8 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
   ) => {
     // Validate file size (5MB max)
     if (file.size > 5 * 1024 * 1024) {
-      toast.error('File size must be less than 5MB', {
-        description: 'Please choose a smaller file',
+      toast.error(t('fileSizeError'), {
+        description: t('fileSizeErrorDesc'),
       })
       return
     }
@@ -73,8 +75,8 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
     // Validate file type
     const validTypes = ['image/jpeg', 'image/png', 'application/pdf']
     if (!validTypes.includes(file.type)) {
-      toast.error('Invalid file type', {
-        description: 'Only PDF, JPEG, and PNG files are allowed',
+      toast.error(t('fileTypeError'), {
+        description: t('fileTypeErrorDesc'),
       })
       return
     }
@@ -83,8 +85,8 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
     setUploadProgress(0)
 
     // Show uploading toast
-    const uploadToast = toast.loading(`Uploading ${DOCUMENT_TYPES[type].label}...`, {
-      description: 'Please wait while we process your document',
+    const uploadToast = toast.loading(t('uploadingDocument', { documentType: DOCUMENT_TYPES[type].label }), {
+      description: t('uploadingDesc'),
     })
 
     try {
@@ -142,8 +144,8 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
 
       // Dismiss loading toast and show success
       toast.dismiss(uploadToast)
-      toast.success('Document uploaded successfully!', {
-        description: `${DOCUMENT_TYPES[type].label} has been validated and saved`,
+      toast.success(t('uploadSuccess'), {
+        description: t('uploadSuccessDesc', { documentType: DOCUMENT_TYPES[type].label }),
         duration: 5000,
       })
 
@@ -154,8 +156,8 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
       
       // Dismiss loading toast and show error
       toast.dismiss(uploadToast)
-      toast.error('Upload failed', {
-        description: error instanceof Error ? error.message : 'Please try again or contact support if the problem persists',
+      toast.error(t('uploadError'), {
+        description: error instanceof Error ? error.message : t('uploadErrorDesc'),
         duration: 7000,
       })
     } finally {
@@ -182,7 +184,7 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-gray-900">Your Documents</h3>
+      <h3 className="text-lg font-semibold text-gray-900">{t('title')}</h3>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {(Object.keys(DOCUMENT_TYPES) as Array<keyof typeof DOCUMENT_TYPES>).map((type) => {
@@ -239,7 +241,7 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                       onClick={() => setSelectedDocument(existingDoc)}
                     >
                       <Eye className="w-4 h-4 mr-1" />
-                      View
+                      {t('view')}
                     </Button>
                     <Button
                       size="sm"
@@ -248,7 +250,7 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                       onClick={() => triggerFileInput(type)}
                     >
                       <Upload className="w-4 h-4 mr-1" />
-                      Replace
+                      {t('replace')}
                     </Button>
                     <input
                       ref={(el) => { fileInputRefs.current[type] = el }}
@@ -277,7 +279,7 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                         />
                       </div>
                       <p className="text-xs text-center text-gray-600">
-                        Uploading... {uploadProgress}%
+                        {t('uploading')} {uploadProgress}%
                       </p>
                     </div>
                   ) : (
@@ -290,7 +292,7 @@ export function DocumentSection({ applicationId, documents, onDocumentUploaded }
                         disabled={!!uploading}
                       >
                         <Upload className="w-4 h-4 mr-1" />
-                        Upload
+                        {t('upload')}
                       </Button>
                       <input
                         ref={(el) => { fileInputRefs.current[type] = el }}

@@ -27,7 +27,7 @@ export default function Step1PersonalInfo({ data, onNext, onBack, isLoading = fa
     formState: { errors, isValid },
   } = useForm<Step1FormData>({
     resolver: zodResolver(step1Schema),
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: data,
   })
 

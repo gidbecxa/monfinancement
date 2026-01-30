@@ -40,7 +40,7 @@ export default function Step2FinancialDetails({
     watch,
   } = useForm<Step2FormData>({
     resolver: zodResolver(step2Schema),
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: data,
   })
 

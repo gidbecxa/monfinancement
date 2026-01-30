@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { MessageCircle, Mail, ExternalLink } from 'lucide-react'
 import Button from '@/components/ui/Button'
 
@@ -20,6 +21,7 @@ export function ContactAdvisor({
   emailBody = 'Hello,\n\nI need assistance with my funding application.\n\nApplication Number: {{applicationNumber}}\n\nThank you.',
   applicationNumber,
 }: ContactAdvisorProps) {
+  const t = useTranslations('dashboard.contactAdvisor')
   
   const handleWhatsAppClick = () => {
     const message = whatsappTemplate + (applicationNumber ? ` #${applicationNumber}` : '')
@@ -41,9 +43,9 @@ export function ContactAdvisor({
           <MessageCircle className="w-6 h-6 text-primary-600" />
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">Need Assistance?</h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">{t('title')}</h3>
           <p className="text-sm text-gray-600 mb-4">
-            Our advisors are here to help you with your funding application. Contact us via WhatsApp or email for quick support.
+            {t('description')}
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -54,7 +56,7 @@ export function ContactAdvisor({
               className="bg-[#25D366] hover:bg-[#20BA5A] text-white border-0"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              WhatsApp Support
+              {t('whatsappButton')}
               <ExternalLink className="w-3 h-3 ml-1" />
             </Button>
 
@@ -65,13 +67,13 @@ export function ContactAdvisor({
               className="border-primary-300 hover:border-primary-400 hover:bg-primary-50"
             >
               <Mail className="w-4 h-4 mr-2" />
-              Email Support
+              {t('emailButton')}
             </Button>
           </div>
 
           {applicationNumber && (
             <p className="text-xs text-gray-500 mt-3">
-              Your application number <span className="font-mono font-semibold text-gray-700">#{applicationNumber}</span> will be included in your message.
+              {t('applicationNumberNote', { number: `#${applicationNumber}` })}
             </p>
           )}
         </div>

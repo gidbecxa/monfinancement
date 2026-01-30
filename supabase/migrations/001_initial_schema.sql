@@ -144,7 +144,7 @@ COMMENT ON TABLE contact_preferences IS 'Stores WhatsApp and email contact infor
 
 -- Insert default contact preferences
 INSERT INTO contact_preferences (whatsapp_number, contact_email, is_active)
-VALUES ('+33612345678', 'contact@monfinancement.co', true)
+VALUES ('+33629125401', 'contact@monfinancement.co', true)
 ON CONFLICT DO NOTHING;
 
 -- =====================================================

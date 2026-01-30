@@ -14,9 +14,9 @@
     "close": "Fermer"
   },
   "fundingTypes": {
-    "personal-loan": "Prêt personnel",
-    "business-loan": "Prêt professionnel",
-    "education-loan": "Prêt éducation",
+    "personal-loan": "Aide personnel",
+    "business-loan": "Aide professionnel",
+    "education-loan": "Aide éducation",
     "medical-assistance": "Assistance médicale",
     "project-funding": "Financement de projet",
     "emergency-aid": "Aide d'urgence",
@@ -43,7 +43,7 @@
     "professionMax": "La profession doit contenir moins de 100 caractères",
     "monthlyIncomeMin": "Le revenu mensuel doit être un nombre positif",
     "monthlyIncomeMax": "Veuillez entrer un revenu mensuel valide",
-    "invalidPhoneFormat": "Format de numéro de téléphone invalide. Utilisez le format international (ex: +33612345678)",
+    "invalidPhoneFormat": "Format de numéro de téléphone invalide. Utilisez le format international (ex: +33629125401)",
     "otpLength": "Le code de vérification doit contenir 6 chiffres",
     "otpNumbers": "Le code de vérification ne doit contenir que des chiffres"
   },
@@ -457,6 +457,56 @@
       "saving": "Enregistrement...",
       "saved": "Profil mis à jour avec succès",
       "error": "Échec de la mise à jour du profil"
+    },
+    "progressTracker": {
+      "applicationProgress": "Progression de la demande"
+    },
+    "documents": {
+      "title": "Vos Documents",
+      "description": "Téléchargez les documents requis pour compléter votre demande",
+      "identityFront": {
+        "label": "Carte d'identité (Recto)",
+        "description": "Face avant de votre carte d'identité"
+      },
+      "identityBack": {
+        "label": "Carte d'identité (Verso)",
+        "description": "Face arrière de votre carte d'identité"
+      },
+      "rib": {
+        "label": "RIB (Relevé d'Identité Bancaire)",
+        "description": "Document d'informations bancaires"
+      },
+      "upload": "Télécharger",
+      "replace": "Remplacer",
+      "view": "Voir",
+      "uploading": "Téléchargement en cours...",
+      "uploaded": "Téléchargé",
+      "fileSizeError": "La taille du fichier doit être inférieure à 5 Mo",
+      "fileSizeErrorDesc": "Veuillez choisir un fichier plus petit",
+      "fileTypeError": "Type de fichier invalide",
+      "fileTypeErrorDesc": "Seuls les fichiers PDF, JPEG et PNG sont autorisés",
+      "uploadingDocument": "Téléchargement de {documentType}...",
+      "uploadingDesc": "Veuillez patienter pendant le traitement de votre document",
+      "uploadError": "Échec du téléchargement",
+      "uploadErrorDesc": "Échec du téléchargement du document. Veuillez réessayer.",
+      "uploadSuccess": "Document téléchargé avec succès !",
+      "uploadSuccessDesc": "{documentType} a été validé et enregistré",
+      "previewTitle": "Aperçu du document",
+      "close": "Fermer"
+    },
+    "activityTimeline": {
+      "title": "Historique des Activités",
+      "noActivity": "Aucune activité pour le moment",
+      "minutesAgo": "{count} minutes passées",
+      "hoursAgo": "{count} heures passées",
+      "daysAgo": "{count} jours passés"
+    },
+    "contactAdvisor": {
+      "title": "Besoin d'Assistance ?",
+      "description": "Nos conseillers sont là pour vous aider avec votre demande de financement. Contactez-nous via WhatsApp ou e-mail pour un support rapide.",
+      "whatsappButton": "Support WhatsApp",
+      "emailButton": "Support E-mail",
+      "applicationNumberNote": "Votre numéro de demande {number} sera inclus dans votre message."
     }
   },
   "footer": {

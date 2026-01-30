@@ -43,7 +43,7 @@
     "professionMax": "A profissão deve ter menos de 100 caracteres",
     "monthlyIncomeMin": "A renda mensal deve ser um número positivo",
     "monthlyIncomeMax": "Digite uma renda mensal válida",
-    "invalidPhoneFormat": "Formato de número de telefone inválido. Use o formato internacional (ex: +33612345678)",
+    "invalidPhoneFormat": "Formato de número de telefone inválido. Use o formato internacional (ex: +33629125401)",
     "otpLength": "O código de verificação deve ter 6 dígitos",
     "otpNumbers": "O código de verificação deve conter apenas números"
   },
@@ -457,6 +457,56 @@
       "saving": "Salvando...",
       "saved": "Perfil atualizado com sucesso",
       "error": "Falha ao atualizar o perfil"
+    },
+    "progressTracker": {
+      "applicationProgress": "Progresso da solicitação"
+    },
+    "documents": {
+      "title": "Seus Documentos",
+      "description": "Carregue os documentos necessários para completar sua solicitação",
+      "identityFront": {
+        "label": "Documento de identidade (Frente)",
+        "description": "Lado frontal do seu documento"
+      },
+      "identityBack": {
+        "label": "Documento de identidade (Verso)",
+        "description": "Lado posterior do seu documento"
+      },
+      "rib": {
+        "label": "Dados bancários",
+        "description": "Documento de informações da conta bancária"
+      },
+      "upload": "Carregar",
+      "replace": "Substituir",
+      "view": "Visualizar",
+      "uploading": "Carregando...",
+      "uploaded": "Carregado",
+      "fileSizeError": "O tamanho do arquivo deve ser menor que 5 MB",
+      "fileSizeErrorDesc": "Por favor, escolha um arquivo menor",
+      "fileTypeError": "Tipo de arquivo inválido",
+      "fileTypeErrorDesc": "Apenas arquivos PDF, JPEG e PNG são permitidos",
+      "uploadingDocument": "Carregando {documentType}...",
+      "uploadingDesc": "Por favor, aguarde enquanto processamos seu documento",
+      "uploadError": "Falha no upload",
+      "uploadErrorDesc": "Falha ao carregar o documento. Por favor, tente novamente.",
+      "uploadSuccess": "Documento carregado com sucesso!",
+      "uploadSuccessDesc": "{documentType} foi validado e salvo",
+      "previewTitle": "Visualização do documento",
+      "close": "Fechar"
+    },
+    "activityTimeline": {
+      "title": "Cronologia de Atividades",
+      "noActivity": "Ainda sem atividade",
+      "minutesAgo": "{count} minutos atrás",
+      "hoursAgo": "{count} horas atrás",
+      "daysAgo": "{count} dias atrás"
+    },
+    "contactAdvisor": {
+      "title": "Precisa de ajuda?",
+      "description": "Nossos consultores estão aqui para ajudá-lo com sua solicitação de financiamento. Entre em contato conosco via WhatsApp ou e-mail para suporte rápido.",
+      "whatsappButton": "Suporte WhatsApp",
+      "emailButton": "Suporte por e-mail",
+      "applicationNumberNote": "Seu número de solicitação {number} será incluído em sua mensagem."
     }
   },
   "footer": {

@@ -43,7 +43,7 @@
     "professionMax": "Der Beruf muss weniger als 100 Zeichen lang sein",
     "monthlyIncomeMin": "Das monatliche Einkommen muss eine positive Zahl sein",
     "monthlyIncomeMax": "Bitte geben Sie ein gültiges monatliches Einkommen ein",
-    "invalidPhoneFormat": "Ungültiges Telefonnummernformat. Verwenden Sie das internationale Format (z.B. +33612345678)",
+    "invalidPhoneFormat": "Ungültiges Telefonnummernformat. Verwenden Sie das internationale Format (z.B. +33629125401)",
     "otpLength": "Der Bestätigungscode muss 6 Ziffern lang sein",
     "otpNumbers": "Der Bestätigungscode darf nur Zahlen enthalten"
   },
@@ -457,6 +457,56 @@
       "saving": "Speichern...",
       "saved": "Profil erfolgreich aktualisiert",
       "error": "Profil konnte nicht aktualisiert werden"
+    },
+    "progressTracker": {
+      "applicationProgress": "Antragsstatus"
+    },
+    "documents": {
+      "title": "Ihre Dokumente",
+      "description": "Laden Sie die erforderlichen Dokumente hoch, um Ihren Antrag zu vervollständigen",
+      "identityFront": {
+        "label": "Personalausweis (Vorderseite)",
+        "description": "Vorderseite Ihres Ausweises"
+      },
+      "identityBack": {
+        "label": "Personalausweis (Rückseite)",
+        "description": "Rückseite Ihres Ausweises"
+      },
+      "rib": {
+        "label": "Bankverbindung",
+        "description": "Dokument mit Bankkontoinformationen"
+      },
+      "upload": "Hochladen",
+      "replace": "Ersetzen",
+      "view": "Ansehen",
+      "uploading": "Hochladen...",
+      "uploaded": "Hochgeladen",
+      "fileSizeError": "Dateigröße muss kleiner als 5 MB sein",
+      "fileSizeErrorDesc": "Bitte wählen Sie eine kleinere Datei",
+      "fileTypeError": "Ungültiger Dateityp",
+      "fileTypeErrorDesc": "Nur PDF-, JPEG- und PNG-Dateien sind erlaubt",
+      "uploadingDocument": "Hochladen von {documentType}...",
+      "uploadingDesc": "Bitte warten Sie, während wir Ihr Dokument verarbeiten",
+      "uploadError": "Upload fehlgeschlagen",
+      "uploadErrorDesc": "Dokument konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.",
+      "uploadSuccess": "Dokument erfolgreich hochgeladen!",
+      "uploadSuccessDesc": "{documentType} wurde validiert und gespeichert",
+      "previewTitle": "Dokumentvorschau",
+      "close": "Schließen"
+    },
+    "activityTimeline": {
+      "title": "Aktivitätsverlauf",
+      "noActivity": "Noch keine Aktivität",
+      "minutesAgo": "vor {count} Minuten",
+      "hoursAgo": "vor {count} Stunden",
+      "daysAgo": "vor {count} Tagen"
+    },
+    "contactAdvisor": {
+      "title": "Benötigen Sie Hilfe?",
+      "description": "Unsere Berater helfen Ihnen gerne bei Ihrem Finanzierungsantrag. Kontaktieren Sie uns über WhatsApp oder E-Mail für schnelle Unterstützung.",
+      "whatsappButton": "WhatsApp-Support",
+      "emailButton": "E-Mail-Support",
+      "applicationNumberNote": "Ihre Antragsnummer {number} wird in Ihrer Nachricht enthalten sein."
     }
   },
   "footer": {

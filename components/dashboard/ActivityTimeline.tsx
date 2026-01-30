@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Clock, CheckCircle, FileText, Upload, Send, AlertCircle } from 'lucide-react'
 
 interface TimelineEvent {
@@ -33,6 +34,8 @@ const EVENT_COLORS = {
 }
 
 export function ActivityTimeline({ events }: ActivityTimelineProps) {
+  const t = useTranslations('dashboard.activityTimeline')
+  
   const formatTimestamp = (timestamp: string) => {
     const date = new Date(timestamp)
     const now = new Date()
@@ -41,9 +44,9 @@ export function ActivityTimeline({ events }: ActivityTimelineProps) {
     const diffHours = Math.floor(diffMs / 3600000)
     const diffDays = Math.floor(diffMs / 86400000)
 
-    if (diffMins < 60) return `${diffMins} minutes ago`
-    if (diffHours < 24) return `${diffHours} hours ago`
-    if (diffDays < 7) return `${diffDays} days ago`
+    if (diffMins < 60) return t('minutesAgo', { count: diffMins })
+    if (diffHours < 24) return t('hoursAgo', { count: diffHours })
+    if (diffDays < 7) return t('daysAgo', { count: diffDays })
     
     return date.toLocaleDateString('en-US', {
       month: 'short',
@@ -56,14 +59,14 @@ export function ActivityTimeline({ events }: ActivityTimelineProps) {
     return (
       <div className="text-center py-8 text-gray-500">
         <Clock className="w-12 h-12 mx-auto mb-2 text-gray-300" />
-        <p className="text-sm">No activity yet</p>
+        <p className="text-sm">{t('noActivity')}</p>
       </div>
     )
   }
 
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Activity Timeline</h3>
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">{t('title')}</h3>
       
       <div className="relative">
         {/* Vertical line */}
